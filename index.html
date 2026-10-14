@@ -10,7 +10,7 @@
 <meta property="og:title" content="Modiri &amp; Phemelo">
 <meta property="og:description" content="Save the date: 14 November 2026, Gauteng.">
 <meta property="og:image" content="save-the-date.jpg">
-<style>html{color-scheme:dark;background:#050505}img{max-width:100%}</style>
+<style>html{color-scheme:dark;background:#020202}img{max-width:100%}</style>
 </head>
 <body>
 
@@ -24,15 +24,17 @@
    Deliberately one light look (paper stock), so no dark-theme blocks. */
 [hidden] { display: none !important; }
 :root {
-  --ground: #050505;       /* the table the stationery sits on */
-  --paper: #0F0F0F;        /* black envelope stock */
-  --paper-2: #181818;
-  --ink: #E8E8E8;          /* silver-white lettering */
-  --ink-soft: #A9A9A9;
-  --seal: #D9D9D9;         /* silver wax, buttons */
+  --ground: #020202;       /* the table the stationery sits on */
+  --paper: #141414;        /* black envelope stock, lifted off the table */
+  --paper-2: #1D1D1D;
+  --ink: #D8D8D8;          /* silver-white lettering (eased from near-white) */
+  --ink-soft: #B4B4B4;
+  --seal: #D9D9D9;
   --seal-deep: #FFFFFF;
-  --rule: rgba(220, 220, 220, .3);
-  --field: rgba(255, 255, 255, .06);
+  --rule: rgba(220, 220, 220, .34);
+  --edge: rgba(220, 220, 220, .5);   /* borders of fields and controls, about 3:1 */
+  --field: rgba(255, 255, 255, .07);
+  --silver: linear-gradient(180deg, #FFFFFF 0%, #C9C9C9 52%, #EDEDED 100%);   /* brushed metal */
   --display: "Cormorant SC", "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
   color-scheme: dark;
@@ -70,7 +72,7 @@ a { color: inherit; }
 .links { display: flex; gap: 20px; min-width: 0; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
 .links::-webkit-scrollbar { display: none; }
 .links a {
-  font-family: var(--display); font-size: 13px; letter-spacing: .2em; text-decoration: none;
+  font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .2em; text-decoration: none;
   white-space: nowrap; padding: 6px 0; border-bottom: 1px solid transparent;
 }
 .links a:hover, .links a:focus-visible { border-bottom-color: var(--ink); outline: none; }
@@ -90,8 +92,8 @@ a { color: inherit; }
 
 /* Stationery sheet with the double hairline frame from the artwork */
 .sheet {
-  position: relative; background: var(--paper);
-  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .7), 0 1px 3px rgba(255, 255, 255, .05);
+  position: relative; background: var(--paper) url("grain.svg");
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .09), inset 0 0 70px rgba(255, 255, 255, .02), 0 0 0 1px rgba(255, 255, 255, .045), 0 28px 60px -28px #000;
   padding: clamp(48px, 9vw, 72px) clamp(28px, 8vw, 72px);
   min-width: 0;
 }
@@ -101,11 +103,11 @@ a { color: inherit; }
 .sheet > * { position: relative; }
 
 /* Envelope-fold corners (hairlines and a faint highlight), alternating top right / bottom left down the page */
-.sheet.pr, .sheet.pl { background-repeat: no-repeat; background-color: var(--paper); }
-.sheet.pr { background-image: url("corner-tr.svg"); background-position: right 0 top 0; background-size: clamp(130px, 34%, 230px) auto; }
-.sheet.pl { background-image: url("corner-bl.svg"); background-position: left 0 bottom 0; background-size: clamp(130px, 34%, 230px) auto; }
+.sheet.pr, .sheet.pl { background-repeat: no-repeat, repeat; background-color: var(--paper); }
+.sheet.pr { background-image: url("corner-tr.svg"), url("grain.svg"); background-position: right 0 top 0, 0 0; background-size: clamp(130px, 34%, 230px) auto, 220px 220px; }
+.sheet.pl { background-image: url("corner-bl.svg"), url("grain.svg"); background-position: left 0 bottom 0, 0 0; background-size: clamp(130px, 34%, 230px) auto, 220px 220px; }
 
-.hero { padding: 0; background: var(--paper); }
+.hero { padding: 0; background: #0b0b0b; }
 .hero::before, .hero::after { display: none; }
 .hero img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 1 / 1; }
 .hero-foot {
@@ -115,10 +117,10 @@ a { color: inherit; }
 .countdown { display: flex; gap: clamp(18px, 6vw, 44px); justify-content: center; font-variant-numeric: lining-nums tabular-nums; }
 .countdown div { display: grid; justify-items: center; }
 .countdown b { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 9vw, 46px); line-height: 1; }
-.countdown span { font-family: var(--display); font-size: 12px; letter-spacing: .22em; color: var(--ink-soft); margin-top: 6px; }
+.countdown span { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; color: var(--ink-soft); margin-top: 6px; }
 
 /* Type */
-.kicker { font-family: var(--display); font-size: 13px; letter-spacing: .26em; color: var(--ink-soft); margin: 0; text-align: center; padding-left: .26em; }
+.kicker { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .26em; color: var(--ink-soft); margin: 0; text-align: center; padding-left: .26em; }
 h2 {
   font-family: var(--display); font-weight: 500; text-align: center;
   font-size: clamp(30px, 7vw, 42px); letter-spacing: .16em; line-height: 1.15;
@@ -126,7 +128,7 @@ h2 {
 }
 .lead { text-align: center; font-style: italic; color: var(--ink-soft); max-width: 46ch; margin: 14px auto 0; text-wrap: balance; }
 .short-rule { width: 120px; height: 1px; background: var(--rule); margin: 26px auto 30px; }
-.label { font-family: var(--display); font-size: 12px; letter-spacing: .22em; color: var(--ink-soft); }
+.label { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .2em; color: var(--ink-soft); }
 .tbc { color: var(--ink-soft); font-style: italic; }
 
 /* The Day */
@@ -165,17 +167,17 @@ h2 {
 .field > label, .field > .label { padding-left: 2px; }
 input[type=text], input[type=tel], select, textarea {
   width: 100%; font: inherit; font-size: 18px; color: var(--ink);
-  background: var(--field); border: 1px solid rgba(220, 220, 220, .28); border-radius: 2px;
+  background: var(--field); border: 1px solid var(--edge); border-radius: 2px;
   padding: 11px 14px; outline: none; transition: border-color .15s, background .15s;
 }
 textarea { min-height: 86px; resize: vertical; }
-input::placeholder, textarea::placeholder { color: rgba(220, 220, 220, .5); font-style: italic; }
+input::placeholder, textarea::placeholder { color: rgba(220, 220, 220, .66); font-style: italic; }
 input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--ink); background: #1E1E1E; }
 .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .choice input { position: absolute; opacity: 0; pointer-events: none; }
 .choice label {
   display: grid; place-items: center; text-align: center; cursor: pointer; min-height: 56px; padding: 10px 8px;
-  border: 1px solid rgba(220, 220, 220, .28); background: var(--field); font-size: 17px; line-height: 1.2; transition: all .15s;
+  border: 1px solid var(--edge); background: var(--field); font-size: 17px; line-height: 1.2; transition: all .15s;
 }
 .choice input:checked + label { background: var(--seal); color: #0A0A0A; border-color: var(--seal); }
 .choice input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
@@ -185,7 +187,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 .done { display: grid; gap: 14px; max-width: 460px; margin: 0 auto; text-align: center; }
 .done p { margin: 0; }
 .summary {
-  text-align: left; white-space: pre-wrap; font-size: 16px; line-height: 1.5;
+  color: var(--ink); text-align: left; white-space: pre-wrap; font-size: 16px; line-height: 1.5;
   background: var(--field); border: 1px dashed var(--rule); padding: 14px 16px; user-select: all;
 }
 .note { font-size: 16px; font-style: italic; color: var(--ink-soft); }
@@ -194,7 +196,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 /* Cards: registry and places to stay */
 .cards { display: grid; gap: 14px; max-width: 560px; margin: 0 auto; }
 .card {
-  background: var(--paper-2); border: 1px solid var(--rule); padding: 22px 20px;
+  background: var(--paper-2); border: 1px solid var(--rule); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); padding: 22px 20px;
   display: grid; grid-template-columns: 1fr auto; column-gap: 20px; row-gap: 6px; align-items: center; min-width: 0; text-align: left;
 }
 .card > :not(.btn) { grid-column: 1; }
@@ -205,7 +207,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 }
 .card h3 { font-family: var(--display); font-weight: 500; font-size: 20px; letter-spacing: .1em; margin: 0; text-wrap: balance; }
 .card p { margin: 0; font-size: 17px; line-height: 1.45; }
-.card .meta { font-family: var(--display); font-size: 12px; letter-spacing: .18em; color: var(--ink-soft); }
+.card .meta { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .18em; color: var(--ink-soft); }
 .card .btn { margin-top: 8px; justify-self: center; }
 .copyline { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .copyline code { font-family: var(--serif); font-size: 17px; background: var(--field); padding: 4px 10px; border: 1px solid var(--rule); user-select: all; }
@@ -250,9 +252,23 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 
 footer { text-align: center; display: grid; gap: 6px; padding-top: 10px; }
 footer { justify-items: center; }
-.preview-note { margin: 0; text-align: center; font-family: var(--display); font-size: 12px; letter-spacing: .24em; color: var(--ink-soft); border: 1px dashed var(--rule); padding: 8px 12px; }
+.preview-note { margin: 0; text-align: center; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; color: var(--ink-soft); border: 1px dashed var(--rule); padding: 8px 12px; }
 footer .mp { width: 110px; height: auto; margin-bottom: 8px; }
-footer p { margin: 0; font-family: var(--display); font-size: 12px; letter-spacing: .24em; color: var(--ink-soft); }
+footer p { margin: 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .24em; color: var(--ink-soft); }
+
+/* Brushed-silver type, echoing the embossed seal. Falls back to plain silver-white. */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h2, .countdown b, .event .time, .venue .name, .card h3 {
+    background: var(--silver); -webkit-background-clip: text; background-clip: text;
+    color: transparent; -webkit-text-fill-color: transparent;
+  }
+}
+/* Main actions: brushed silver fill. Secondary: brushed silver outline. */
+.btn { background: var(--silver); border-color: #F2F2F2; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75), 0 8px 20px -10px #000; }
+.btn:hover { background: var(--silver); filter: brightness(1.08); border-color: #fff; }
+.btn.ghost { background: transparent; box-shadow: none; filter: none; border: 1px solid transparent; border-image: linear-gradient(135deg, #F4F4F4, #8E8E8E 50%, #DCDCDC) 1; color: var(--ink); }
+.btn.ghost:hover { background: rgba(255, 255, 255, .08); }
+.choice input:checked + label { background: var(--silver); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75); }
 </style>
 
 <nav class="nav" aria-label="Sections">
