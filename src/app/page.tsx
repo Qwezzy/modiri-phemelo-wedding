@@ -23,21 +23,30 @@ function Section({ id, title, children }: { id: string; title: string; children:
 export default function Home() {
   return (
     <main className="pb-16">
-      {/* Hero */}
-      <header className="relative min-h-[100svh] flex items-center justify-center px-8 py-20 flaps">
-        <div className="text-center hero-in">
-          <p className="heading text-xs md:text-sm text-ivory/90">Save the date</p>
-          <Hairline className="mt-4 mb-10" />
-          <Seal size={180} className="mx-auto w-36 h-36 md:w-48 md:h-48" />
-          <h1 className="mt-10">
-            <span className="heading block text-3xl md:text-5xl">{couple.first}</span>
-            <span className="heading block text-xs md:text-sm my-3 text-ivory/80">weds</span>
-            <span className="heading block text-3xl md:text-5xl">{couple.second}</span>
+      {/* Hero: mirrors the approved save-the-date card */}
+      <header className="hero relative min-h-[100svh] flex items-center justify-center px-6 py-12">
+        <svg aria-hidden className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 100 100" preserveAspectRatio="none">
+          <polygon points="0,9 50,37 100,9 100,0 0,0" fill="#ffffff" fillOpacity="0.022" />
+          <polyline points="0,9 50,37 100,9" fill="none" stroke="#000" strokeOpacity="0.7" strokeWidth="0.35" />
+          <polyline points="0,9.3 50,37.3 100,9.3" fill="none" stroke="#fff" strokeOpacity="0.05" strokeWidth="0.2" />
+          <polyline points="0,60 29,35" fill="none" stroke="#000" strokeOpacity="0.55" strokeWidth="0.3" />
+          <polyline points="100,60 71,35" fill="none" stroke="#000" strokeOpacity="0.55" strokeWidth="0.3" />
+          <polyline points="0,60.3 29,35.3" fill="none" stroke="#fff" strokeOpacity="0.04" strokeWidth="0.2" />
+          <polyline points="100,60.3 71,35.3" fill="none" stroke="#fff" strokeOpacity="0.04" strokeWidth="0.2" />
+        </svg>
+        <div className="text-center hero-in relative">
+          <p className="t t-std">Save the date</p>
+          <span className="rule" style={{ width: "calc(var(--u) * 210)", marginTop: "calc(var(--u) * 26)" }} />
+          <Seal hero className="seal block" />
+          <h1>
+            <span className="t t-name block">{couple.first}</span>
+            <span className="t t-weds block">weds</span>
+            <span className="t t-name block">{couple.second}</span>
           </h1>
-          <Hairline className="my-8" />
-          <p className="heading text-lg md:text-2xl">{event.dateLong}</p>
-          <p className="heading text-[0.7rem] md:text-xs mt-3 text-ivory/80">{event.town} · {event.region}</p>
-          <Hairline className="my-8" />
+          <span className="rule" style={{ width: "calc(var(--u) * 175)", margin: "calc(var(--u) * 44) auto calc(var(--u) * 38)" }} />
+          <p className="t t-date">{event.dateLong}</p>
+          <p className="t t-place">{event.town} · {event.region}</p>
+          <span className="rule" style={{ width: "calc(var(--u) * 175)", margin: "calc(var(--u) * 28) auto calc(var(--u) * 24)" }} />
           <a href="#rsvp" className="btn-silver">RSVP</a>
         </div>
       </header>
@@ -120,7 +129,7 @@ export default function Home() {
       </Section>
 
       <footer className="text-center px-8 pt-12 pb-10">
-        <Seal size={80} className="mx-auto w-20 h-20" />
+        <Seal size={84} className="mx-auto w-[84px] h-auto" />
         <p className="heading text-xs mt-6">{couple.first} &amp; {couple.second} · {event.dateShort}</p>
         <p className="mt-4 text-ivory/70 italic">{contact.text}</p>
       </footer>

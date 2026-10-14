@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Cinzel } from "next/font/google";
+import { Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
-const display = Cinzel({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-display" });
+const display = Cormorant_Garamond({ subsets: ["latin"], weight: ["500", "600"], variable: "--font-display" });
 const body = Cormorant_Garamond({ subsets: ["latin"], weight: ["400", "500"], style: ["normal", "italic"], variable: "--font-body" });
 
 export const metadata: Metadata = {
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   description: "You are invited to celebrate the wedding of Modiri and Phemelo on 14 November 2026 at Suitability Gardens, De Deur, Gauteng.",
   openGraph: { title: "Modiri weds Phemelo · 14 November 2026", description: "14 November 2026 · Suitability Gardens, De Deur, Gauteng", images: ["/og.png"] },
 };
-export const viewport: Viewport = { themeColor: "#0b0b0b" };
+export const viewport: Viewport = { themeColor: "#101010" };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
