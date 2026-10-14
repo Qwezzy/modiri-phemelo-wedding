@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Modiri &amp; Phemelo</title>
 <meta name="description" content="Modiri weds Phemelo. 14 November 2026, Gauteng. RSVP, registry, places to stay, directions and gallery.">
-<meta name="theme-color" content="#F1ECE4">
-<link rel="icon" type="image/png" href="monogram.png">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="icon" type="image/png" href="seal.png">
 <meta property="og:title" content="Modiri &amp; Phemelo">
 <meta property="og:description" content="Save the date: 14 November 2026, Gauteng.">
 <meta property="og:image" content="save-the-date.jpg">
-<style>html{color-scheme:light}img{max-width:100%}</style>
+<style>html{color-scheme:dark;background:#050505}img{max-width:100%}</style>
 </head>
 <body>
 
@@ -24,18 +24,18 @@
    Deliberately one light look (paper stock), so no dark-theme blocks. */
 [hidden] { display: none !important; }
 :root {
-  --ground: #E4DCD0;       /* table the stationery sits on */
-  --paper: #F1ECE4;        /* ivory envelope stock */
-  --paper-2: #EAE3D8;
-  --ink: #6E5234;          /* bronze-brown lettering */
-  --ink-soft: #8A6E4E;
-  --seal: #9A7A52;         /* wax-seal bronze, buttons */
-  --seal-deep: #7C5F3D;
-  --rule: rgba(110, 82, 52, .32);
-  --field: rgba(255, 255, 255, .6);
+  --ground: #050505;       /* the table the stationery sits on */
+  --paper: #0F0F0F;        /* black envelope stock */
+  --paper-2: #181818;
+  --ink: #E8E8E8;          /* silver-white lettering */
+  --ink-soft: #A9A9A9;
+  --seal: #D9D9D9;         /* silver wax, buttons */
+  --seal-deep: #FFFFFF;
+  --rule: rgba(220, 220, 220, .3);
+  --field: rgba(255, 255, 255, .06);
   --display: "Cormorant SC", "Cormorant Garamond", Garamond, "Times New Roman", serif;
   --serif: "Cormorant Garamond", Garamond, "Times New Roman", serif;
-  color-scheme: light;
+  color-scheme: dark;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 80px; }
@@ -53,7 +53,7 @@ a { color: inherit; }
 /* ---------- Navigation ---------- */
 .nav {
   position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
-  background: rgba(241, 236, 228, .92);
+  background: rgba(8, 8, 8, .92);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--rule);
 }
@@ -91,7 +91,7 @@ a { color: inherit; }
 /* Stationery sheet with the double hairline frame from the artwork */
 .sheet {
   position: relative; background: var(--paper);
-  box-shadow: 0 24px 50px -30px rgba(80, 58, 30, .35), 0 1px 3px rgba(80, 58, 30, .08);
+  box-shadow: 0 24px 50px -30px rgba(0, 0, 0, .7), 0 1px 3px rgba(255, 255, 255, .05);
   padding: clamp(48px, 9vw, 72px) clamp(28px, 8vw, 72px);
   min-width: 0;
 }
@@ -100,10 +100,10 @@ a { color: inherit; }
 .sheet::after { inset: 19px; }
 .sheet > * { position: relative; }
 
-/* Pearl corners from the save-the-date, alternating top right / bottom left down the page */
+/* Envelope-fold corners (hairlines and a faint highlight), alternating top right / bottom left down the page */
 .sheet.pr, .sheet.pl { background-repeat: no-repeat; background-color: var(--paper); }
-.sheet.pr { background-image: url("pearls-tr.png"); background-position: right 0 top 0; background-size: clamp(140px, 36%, 230px) auto; }
-.sheet.pl { background-image: url("pearls-bl.png"); background-position: left 0 bottom 0; background-size: clamp(120px, 32%, 210px) auto; }
+.sheet.pr { background-image: url("corner-tr.svg"); background-position: right 0 top 0; background-size: clamp(130px, 34%, 230px) auto; }
+.sheet.pl { background-image: url("corner-bl.svg"); background-position: left 0 bottom 0; background-size: clamp(130px, 34%, 230px) auto; }
 
 .hero { padding: 0; background: var(--paper); }
 .hero::before, .hero::after { display: none; }
@@ -149,12 +149,12 @@ h2 {
   appearance: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   font-family: var(--display); font-weight: 500; font-size: 14px; letter-spacing: .22em;
   padding: 14px 24px 13px; min-height: 48px; text-decoration: none; cursor: pointer;
-  background: var(--seal); color: #FBF7F0; border: 1px solid var(--seal);
+  background: var(--seal); color: #0A0A0A; border: 1px solid var(--seal);
   transition: background .15s, color .15s;
 }
 .btn:hover { background: var(--seal-deep); border-color: var(--seal-deep); }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--ink-soft); }
-.btn.ghost:hover { background: rgba(110, 82, 52, .07); }
+.btn.ghost:hover { background: rgba(255, 255, 255, .09); }
 .btn:focus-visible, .textlink:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
 .btn.block { width: 100%; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
@@ -165,23 +165,23 @@ h2 {
 .field > label, .field > .label { padding-left: 2px; }
 input[type=text], input[type=tel], select, textarea {
   width: 100%; font: inherit; font-size: 18px; color: var(--ink);
-  background: var(--field); border: 1px solid rgba(110, 82, 52, .28); border-radius: 2px;
+  background: var(--field); border: 1px solid rgba(220, 220, 220, .28); border-radius: 2px;
   padding: 11px 14px; outline: none; transition: border-color .15s, background .15s;
 }
 textarea { min-height: 86px; resize: vertical; }
-input::placeholder, textarea::placeholder { color: rgba(110, 82, 52, .5); font-style: italic; }
-input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--ink); background: #fff; }
+input::placeholder, textarea::placeholder { color: rgba(220, 220, 220, .5); font-style: italic; }
+input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--ink); background: #1E1E1E; }
 .choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .choice input { position: absolute; opacity: 0; pointer-events: none; }
 .choice label {
   display: grid; place-items: center; text-align: center; cursor: pointer; min-height: 56px; padding: 10px 8px;
-  border: 1px solid rgba(110, 82, 52, .28); background: var(--field); font-size: 17px; line-height: 1.2; transition: all .15s;
+  border: 1px solid rgba(220, 220, 220, .28); background: var(--field); font-size: 17px; line-height: 1.2; transition: all .15s;
 }
-.choice input:checked + label { background: var(--seal); color: #FBF7F0; border-color: var(--seal); }
+.choice input:checked + label { background: var(--seal); color: #0A0A0A; border-color: var(--seal); }
 .choice input:focus-visible + label { outline: 2px solid var(--ink); outline-offset: 2px; }
 .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
 @media (max-width: 460px) { .row2 { grid-template-columns: 1fr; } }
-.err { color: #9A3B24; font-size: 16px; font-style: italic; margin: 0; }
+.err { color: #E8917C; font-size: 16px; font-style: italic; margin: 0; }
 .done { display: grid; gap: 14px; max-width: 460px; margin: 0 auto; text-align: center; }
 .done p { margin: 0; }
 .summary {
@@ -223,8 +223,8 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 .gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 @media (max-width: 440px) { .gallery { gap: 6px; } }
 .gallery button { padding: 0; border: 0; background: var(--paper-2); cursor: zoom-in; aspect-ratio: 1; overflow: hidden; }
-.gallery img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; transition: transform .4s; }
-.gallery button:hover img { transform: scale(1.04); }
+.gallery img { width: 100%; height: 100%; object-fit: cover; object-position: center 28%; display: block; filter: grayscale(1) contrast(1.06); transition: transform .4s, filter .4s; }
+.gallery button:hover img { transform: scale(1.04); filter: grayscale(0); }
 .gallery button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .empty {
   border: 1px dashed var(--rule); padding: 40px 20px; text-align: center; display: grid; gap: 10px; justify-items: center;
@@ -234,7 +234,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 .empty .frames i:nth-child(2) { height: 84px; margin-top: -7px; }
 .empty p { margin: 0; }
 .lightbox {
-  position: fixed; inset: 0; z-index: 50; background: rgba(40, 30, 18, .88);
+  position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .93);
   display: grid; place-items: center;
   padding: calc(48px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(48px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
 }
@@ -251,13 +251,13 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 footer { text-align: center; display: grid; gap: 6px; padding-top: 10px; }
 footer { justify-items: center; }
 .preview-note { margin: 0; text-align: center; font-family: var(--display); font-size: 12px; letter-spacing: .24em; color: var(--ink-soft); border: 1px dashed var(--rule); padding: 8px 12px; }
-footer .mp { width: 120px; height: auto; margin-bottom: 6px; }
+footer .mp { width: 110px; height: auto; margin-bottom: 8px; }
 footer p { margin: 0; font-family: var(--display); font-size: 12px; letter-spacing: .24em; color: var(--ink-soft); }
 </style>
 
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
-    <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="monogram.png" width="400" height="312" alt=""></a>
+    <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="seal.png" width="379" height="398" alt=""></a>
     <div class="links">
       <a href="#rsvp">RSVP</a>
       <a href="#registry">REGISTRY</a>
@@ -430,7 +430,7 @@ footer p { margin: 0; font-family: var(--display); font-size: 12px; letter-spaci
   </section>
 
   <footer>
-    <img class="mp" src="monogram.png" width="400" height="312" alt="Modiri and Phemelo monogram">
+    <img class="mp" src="seal.png" width="379" height="398" alt="Modiri and Phemelo wax seal">
     <p>MODIRI &amp; PHEMELO · 14.11.2026 · GAUTENG</p>
   </footer>
 </main>
