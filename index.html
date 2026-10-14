@@ -408,6 +408,7 @@ footer p { margin: 0; font-family: var(--display); font-size: 12px; letter-spaci
     <div class="btn-row" id="dir-btns" style="margin-top:22px">
       <a class="btn" id="gmaps" href="#" target="_blank" rel="noopener">GOOGLE MAPS</a>
       <a class="btn ghost" id="waze" href="#" target="_blank" rel="noopener">WAZE</a>
+      <a class="btn ghost" id="venue-site" href="#" target="_blank" rel="noopener" hidden>VENUE WEBSITE</a>
       <a class="btn ghost" id="gcal" href="#" target="_blank" rel="noopener">ADD TO CALENDAR</a>
     </div>
     <ul class="route-list" id="routes"></ul>
@@ -459,6 +460,7 @@ const SITE = {
 
   venueName: "The Glass House Venue",
   venueAddress: "Muldersdrift, Gauteng",
+  venueSite: "https://suitabilitygardens.co.za/weddings/",
   routes: [
     { from: "From OR Tambo", text: "About 1 hour by road. Allow extra time for Saturday traffic." },
     { from: "From Sandton", text: "About 50 minutes. Use the navigation buttons above for the live route." },
@@ -543,6 +545,7 @@ const hasVenue = !!SITE.venueName;
 $("dir-empty").hidden = hasVenue; $("dir-venue").hidden = !hasVenue; $("dir-btns").hidden = !hasVenue; $("routes").hidden = !hasVenue;
 const place = [SITE.venueName, SITE.venueAddress].filter(Boolean).join(", ");
 $("gmaps").href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(place);
+if (SITE.venueSite) { $("venue-site").href = SITE.venueSite; $("venue-site").hidden = false; }
 $("waze").href = "https://waze.com/ul?navigate=yes&q=" + encodeURIComponent(place);
 {
   const pad = (n) => String(n).padStart(2, "0");
