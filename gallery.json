@@ -1,38 +1,47 @@
 [
  {
-  "src": "photos/sample-1.jpg",
-  "alt": "Sample photo 1"
+  "src": "photos/wedding-1.jpg",
+  "alt": "Bride and groom sharing a close, smiling moment",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-2.jpg",
-  "alt": "Sample photo 2"
+  "src": "photos/wedding-2.jpg",
+  "alt": "Groom in a white tuxedo holding his bride close",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-3.jpg",
-  "alt": "Sample photo 3"
+  "src": "photos/wedding-3.jpg",
+  "alt": "Groom kissing his bride's hand",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-4.jpg",
-  "alt": "Sample photo 4"
+  "src": "photos/wedding-4.jpg",
+  "alt": "Couple exchanging glances after the ceremony",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-5.jpg",
-  "alt": "Sample photo 5"
+  "src": "photos/wedding-5.jpg",
+  "alt": "Couple embracing in a studio portrait",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-6.jpg",
-  "alt": "Sample photo 6"
+  "src": "photos/wedding-6.jpg",
+  "alt": "Couple embracing on the stairs outdoors",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-7.jpg",
-  "alt": "Sample photo 7"
+  "src": "photos/wedding-7.jpg",
+  "alt": "Groom placing the ring during the ceremony",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-8.jpg",
-  "alt": "Sample photo 8"
+  "src": "photos/wedding-8.jpg",
+  "alt": "Wedding rings on a couple's hands",
+  "credit": "Pexels"
  },
  {
-  "src": "photos/sample-9.jpg",
-  "alt": "Sample photo 9"
+  "src": "photos/wedding-9.jpg",
+  "alt": "Couple holding hands, black and white",
+  "credit": "Pexels"
  }
 ]
