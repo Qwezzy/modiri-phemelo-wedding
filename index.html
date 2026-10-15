@@ -272,6 +272,8 @@ footer .credit b { font-weight: 600; color: var(--ink); }
 .btn.ghost:hover { background: rgba(255, 255, 255, .08); }
 .choice input:checked + label { background: var(--silver); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .75); }
 </style>
+<link rel="stylesheet" href="motion.css">
+<script>(function(d){var r=d.documentElement;if(window.IntersectionObserver&&!matchMedia("(prefers-reduced-motion: reduce)").matches){r.className+=" mo";setTimeout(function(){if(!window.__mo)r.className=r.className.replace(/\bmo\b/,"")},4000)}})(document)</script>
 
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
@@ -686,6 +688,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowRight") openLb(current + 1);
 });
 </script>
+<script src="motion.js" defer></script>
 
 </body>
 </html>
