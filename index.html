@@ -473,7 +473,7 @@ const SITE = {
   // and that section shows "to follow with the official invitation". Set preview:false to hide the banner.
   preview: true,
   date: { y: 2026, m: 11, d: 14, hour: 15, minute: 0 },   // ceremony start, SAST
-  ceremony: { time: "15:00", venue: "The Glass House Venue", note: "Muldersdrift, Gauteng" },
+  ceremony: { time: "15:00", venue: "Suitability Gardens", note: "Gauteng" },
   reception: { time: "17:30 – Late", venue: "The Grand Ballroom", note: "Dinner, Drinks & Dancing" },
   dressCode: "Black tie · ivory, champagne & gold",     // sample, not on the card
 
@@ -481,8 +481,9 @@ const SITE = {
   rsvpWhatsApp: "27820000000",       // sample number
   maxGuests: 2,
 
-  venueName: "The Glass House Venue",
-  venueAddress: "Muldersdrift, Gauteng",
+  venueName: "Suitability Gardens",
+  venueAddress: "Gauteng",
+  venueMap: "https://maps.app.goo.gl/DV1dMopuCz2NrPWE6",   // exact Google Maps pin, used by the Google Maps button
   venueSite: "https://suitabilitygardens.co.za/weddings/",
   routes: [
     { from: "From OR Tambo", text: "About 1 hour by road. Allow extra time for Saturday traffic." },
@@ -567,7 +568,7 @@ SITE.stays.forEach(s => {
 const hasVenue = !!SITE.venueName;
 $("dir-empty").hidden = hasVenue; $("dir-venue").hidden = !hasVenue; $("dir-btns").hidden = !hasVenue; $("routes").hidden = !hasVenue;
 const place = [SITE.venueName, SITE.venueAddress].filter(Boolean).join(", ");
-$("gmaps").href = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(place);
+$("gmaps").href = SITE.venueMap || "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(place);
 if (SITE.venueSite) { $("venue-site").href = SITE.venueSite; $("venue-site").hidden = false; }
 $("waze").href = "https://waze.com/ul?navigate=yes&q=" + encodeURIComponent(place);
 {
