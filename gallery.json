@@ -1,47 +1,77 @@
 [
  {
-  "src": "photos/wedding-1.jpg",
-  "alt": "Bride and groom sharing a close, smiling moment",
-  "credit": "Pexels"
+  "src": "photos/mp-01.jpg",
+  "thumb": "photos/thumb/mp-01.jpg",
+  "alt": "The couple standing close together, he in white with blue beaded trim, she in a black beaded shawl"
  },
  {
-  "src": "photos/wedding-2.jpg",
-  "alt": "Groom in a white tuxedo holding his bride close",
-  "credit": "Pexels"
+  "src": "photos/mp-02.jpg",
+  "thumb": "photos/thumb/mp-02.jpg",
+  "alt": "The couple side by side, she glancing towards him"
  },
  {
-  "src": "photos/wedding-3.jpg",
-  "alt": "Groom kissing his bride's hand",
-  "credit": "Pexels"
+  "src": "photos/mp-03.jpg",
+  "thumb": "photos/thumb/mp-03.jpg",
+  "alt": "Holding hands, full length on the street at dusk"
  },
  {
-  "src": "photos/wedding-4.jpg",
-  "alt": "Couple exchanging glances after the ceremony",
-  "credit": "Pexels"
+  "src": "photos/mp-04.jpg",
+  "thumb": "photos/thumb/mp-04.jpg",
+  "alt": "Facing each other and holding hands"
  },
  {
-  "src": "photos/wedding-5.jpg",
-  "alt": "Couple embracing in a studio portrait",
-  "credit": "Pexels"
+  "src": "photos/mp-05.jpg",
+  "thumb": "photos/thumb/mp-05.jpg",
+  "alt": "Facing each other, hands joined"
  },
  {
-  "src": "photos/wedding-6.jpg",
-  "alt": "Couple embracing on the stairs outdoors",
-  "credit": "Pexels"
+  "src": "photos/mp-06.jpg",
+  "thumb": "photos/thumb/mp-06.jpg",
+  "alt": "A kiss on the forehead"
  },
  {
-  "src": "photos/wedding-7.jpg",
-  "alt": "Groom placing the ring during the ceremony",
-  "credit": "Pexels"
+  "src": "photos/mp-07.jpg",
+  "thumb": "photos/thumb/mp-07.jpg",
+  "alt": "Standing together, both looking at the camera"
  },
  {
-  "src": "photos/wedding-8.jpg",
-  "alt": "Wedding rings on a couple's hands",
-  "credit": "Pexels"
+  "src": "photos/mp-08.jpg",
+  "thumb": "photos/thumb/mp-08.jpg",
+  "alt": "Standing arm in arm, full length"
  },
  {
-  "src": "photos/wedding-9.jpg",
-  "alt": "Couple holding hands, black and white",
-  "credit": "Pexels"
+  "src": "photos/mp-09.jpg",
+  "thumb": "photos/thumb/mp-09.jpg",
+  "alt": "He looks away while she looks into the camera"
+ },
+ {
+  "src": "photos/mp-10.jpg",
+  "thumb": "photos/thumb/mp-10.jpg",
+  "alt": "Looking at each other and smiling"
+ },
+ {
+  "src": "photos/mp-11.jpg",
+  "thumb": "photos/thumb/mp-11.jpg",
+  "alt": "A shared smile, close together"
+ },
+ {
+  "src": "photos/mp-12.jpg",
+  "thumb": "photos/thumb/mp-12.jpg",
+  "alt": "Close portrait, smiling at the camera"
+ },
+ {
+  "src": "photos/mp-13.jpg",
+  "thumb": "photos/thumb/mp-13.jpg",
+  "alt": "Close portrait, composed and still"
+ },
+ {
+  "src": "photos/mp-14.jpg",
+  "thumb": "photos/thumb/mp-14.jpg",
+  "alt": "Wide shot, holding hands on the road"
+ },
+ {
+  "src": "photos/mp-15.jpg",
+  "thumb": "photos/thumb/mp-15.jpg",
+  "alt": "Full-length portrait, hand in hand"
  }
 ]
