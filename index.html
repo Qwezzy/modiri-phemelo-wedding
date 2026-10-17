@@ -667,7 +667,7 @@ fetch("gallery.json").then(r => r.ok ? r.json() : []).then(list => {
   $("gallery-credit").hidden = !(SITE.preview && photos.some(p => p.credit));
   photos.forEach((p, i) => {
     const b = el("button"); b.type = "button"; b.setAttribute("aria-label", "Open photo " + (i + 1));
-    const img = el("img"); img.src = p.thumb || p.src; img.alt = p.alt || ""; img.loading = i < 6 ? "eager" : "lazy"; img.decoding = "async";
+    const img = el("img"); img.src = p.thumb || p.src; img.alt = p.alt || ""; img.loading = i < 6 ? "eager" : "lazy"; img.decoding = "async"; if (p.pos) img.style.objectPosition = p.pos;
     b.append(img); b.addEventListener("click", () => openLb(i));
     $("gallery-grid").append(b);
   });
