@@ -1,4 +1,165 @@
 {
-  "asOf": "",
-  "items": []
+  "asOf": "October 2026",
+  "items": [
+    {
+      "name": "Drinks Trolley with Glass Top",
+      "note": "Man",
+      "price": 36999,
+      "img": "wishlist/drinks-trolley.jpg",
+      "alt": "Drinks trolley in polished metal with a glass top"
+    },
+    {
+      "name": "Cutlery 24pc Set",
+      "note": "Cut Above",
+      "price": 5249,
+      "img": "wishlist/cutlery-set.jpg",
+      "alt": "Boxed 24 piece stainless steel cutlery set"
+    },
+    {
+      "name": "Teapot",
+      "note": "It's a Secret",
+      "price": 1549,
+      "img": "wishlist/teapot.jpg",
+      "alt": "White teapot with a face and a finger to the lips"
+    },
+    {
+      "name": "Sugar Bowl",
+      "note": "Eye for Detail",
+      "price": 799,
+      "img": "wishlist/sugar-bowl.jpg",
+      "alt": "White sugar bowl with a lid and a face behind a hand"
+    },
+    {
+      "name": "Milk Jug",
+      "note": "Face Facts",
+      "price": 749,
+      "img": "wishlist/milk-jug.jpg",
+      "alt": "White milk jug with a line drawing of a face"
+    },
+    {
+      "name": "Canister Set of 3",
+      "note": "Sketchbook Mix",
+      "price": 1679,
+      "img": "wishlist/canister-set.jpg",
+      "alt": "Three white canisters with sketched faces"
+    },
+    {
+      "name": "Salad Bowl",
+      "note": "It's a Secret!",
+      "price": 1999,
+      "img": "wishlist/salad-bowl-secret.jpg",
+      "alt": "White salad bowl with a face and a finger to the lips"
+    },
+    {
+      "name": "Salad Bowl",
+      "note": "Indigo Girl",
+      "price": 1049,
+      "img": "wishlist/salad-bowl-indigo.jpg",
+      "alt": "White salad bowl with an indigo figure"
+    },
+    {
+      "name": "Small Bowl Set of 2",
+      "note": "Indigo Girls",
+      "price": 459,
+      "img": "wishlist/small-bowl-set.jpg",
+      "alt": "Two small white bowls with indigo figures"
+    },
+    {
+      "name": "Bowl with Lid, Medium",
+      "note": "Luxe Loungers",
+      "price": 1699,
+      "img": "wishlist/bowl-with-lid.jpg",
+      "alt": "Smoked glass bowl with a silver lid"
+    },
+    {
+      "name": "Mug Set of 4",
+      "note": "Graceful",
+      "price": 999,
+      "img": "wishlist/mug-set-graceful.jpg",
+      "alt": "Four white mugs with an indigo figure"
+    },
+    {
+      "name": "Mug Set of 4",
+      "note": "Sketchbook Grey",
+      "price": 999,
+      "img": "wishlist/mug-set-grey.jpg",
+      "alt": "Four white mugs with grey line drawings of faces"
+    },
+    {
+      "name": "Teaspoon Set of 6",
+      "note": "Woman",
+      "price": 1099,
+      "img": "wishlist/teaspoons.jpg",
+      "alt": "Six stainless steel teaspoons with a sculpted figure"
+    },
+    {
+      "name": "Salad Servers, Medium",
+      "note": "Allure",
+      "price": 999,
+      "img": "wishlist/salad-servers.jpg",
+      "alt": "Pair of stainless steel salad servers"
+    },
+    {
+      "name": "Salt and Pepper Set",
+      "note": "Enigma Satin",
+      "price": 599,
+      "img": "wishlist/salt-pepper.jpg",
+      "alt": "White ceramic salt and pepper set shaped as two faces"
+    },
+    {
+      "name": "Bottle Stopper",
+      "note": "Elephant",
+      "price": 499,
+      "img": "wishlist/bottle-stopper.jpg",
+      "alt": "Polished metal bottle stopper shaped as an elephant"
+    },
+    {
+      "name": "Champagne Flute Set of 4",
+      "note": "Baobab",
+      "price": 1099,
+      "img": "wishlist/champagne-flutes.jpg",
+      "alt": "Four clear champagne flutes"
+    },
+    {
+      "name": "Red Wine Glass Set of 4",
+      "note": "Baobab",
+      "price": 1099,
+      "img": "wishlist/red-wine-glasses.jpg",
+      "alt": "Four clear red wine glasses"
+    },
+    {
+      "name": "Gift Voucher",
+      "note": "Carrol Boyes",
+      "price": "From R500",
+      "img": "wishlist/gift-voucher.jpg",
+      "alt": "Carrol Boyes gift voucher"
+    },
+    {
+      "name": "Smeg 2 Slice Toaster",
+      "note": "White",
+      "store": "From @home",
+      "price": "",
+      "img": "wishlist/smeg-toaster.jpg",
+      "alt": "White Smeg two slice toaster",
+      "hide": true
+    },
+    {
+      "name": "Smeg Kettle 3D",
+      "note": "White",
+      "store": "From @home",
+      "price": "",
+      "img": "wishlist/smeg-kettle.jpg",
+      "alt": "White Smeg kettle",
+      "hide": true
+    },
+    {
+      "name": "Aura Onyx Electric Diffuser",
+      "note": "Black",
+      "store": "From @home",
+      "price": "",
+      "img": "wishlist/aura-diffuser.jpg",
+      "alt": "Black Aura Onyx electric diffuser",
+      "hide": true
+    }
+  ]
 }
