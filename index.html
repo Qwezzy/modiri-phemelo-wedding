@@ -297,7 +297,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   <!-- Hero: the couple's artwork as supplied -->
   <section class="sheet hero" aria-label="Invitation">
     <img src="invitation.jpg" width="1254" height="1254"
-         alt="You are cordially invited to Modiri weds Phemelo, 14 November 2026, Gauteng Province. The official invitation to follow. Strictly no kids allowed.">
+         alt="You are cordially invited to Modiri weds Phemelo, 14 November 2026, Gauteng Province. Strictly no kids allowed.">
     <div class="hero-foot">
       <p class="kicker">SATURDAY · 14 NOVEMBER 2026</p>
       <div class="countdown" id="countdown" aria-live="off">
@@ -349,8 +349,8 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="lead" id="rsvp-adults" data-k="adultsLine" style="margin:0 0 24px" hidden></p>
 
     <div class="empty" id="rsvp-closed" hidden>
-      <p>RSVPs open with the official invitation.</p>
-      <p class="note">Keep the date free. We will send the invitation with everything you need to reply.</p>
+      <p>RSVPs will open shortly.</p>
+      <p class="note">Keep the date free. Reply details will appear here.</p>
     </div>
     <form class="form" id="rsvp-form" novalidate>
       <div class="field">
@@ -389,14 +389,14 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       </div>
       <p class="err" id="err" hidden></p>
       <button class="btn block" type="submit">SEND RSVP</button>
-      <p class="note" style="margin:0;text-align:center">* Required. Sending opens WhatsApp with your reply ready to go.</p>
+      <p class="note" style="margin:0;text-align:center">* Required. Sending opens your email app with your reply ready to go.</p>
     </form>
 
     <div class="done" id="done" hidden aria-live="polite">
       <p class="kicker" id="done-title">THANK YOU</p>
       <p id="done-msg"></p>
-      <a class="btn block" id="wa-link" href="#" target="_blank" rel="noopener">SEND ON WHATSAPP</a>
-      <p class="note">Your reply reaches the couple once you press send in WhatsApp. No WhatsApp? Copy the reply and SMS it to <span data-k="rsvpNumberDisplay" style="user-select:all"></span>.</p>
+      <a class="btn block" id="mail-link" href="#">SEND BY EMAIL</a>
+      <p class="note">Your reply reaches the couple once you press send in your email app. No email app opened? Copy the reply and email it to <span data-k="rsvpEmail" style="user-select:all"></span>.</p>
       <div class="summary" id="summary"></div>
       <button class="btn ghost block" type="button" id="copy-btn">COPY REPLY</button>
       <button class="textlink" type="button" id="edit-btn">Change my reply</button>
@@ -415,7 +415,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       <p class="lead" data-k="vouchersNote"></p>
       <div class="cards" id="registry-cards"></div>
     </div>
-    <div class="empty" id="registry-empty" hidden><p>Registry details will be shared with the official invitation.</p></div>
+    <div class="empty" id="registry-empty" hidden><p>Registry details will be shared soon.</p></div>
   </section>
 
   <!-- Places to stay -->
@@ -425,7 +425,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="lead" data-k="stayNote"></p>
     <div class="short-rule"></div>
     <div class="cards" id="stay-cards"></div>
-    <div class="empty" id="stay-empty" hidden><p>Recommended places to stay will be listed once the venue is announced.</p><p class="note">Guests travelling from outside Gauteng: we will share options near the venue with the official invitation.</p></div>
+    <div class="empty" id="stay-empty" hidden><p>Recommended places to stay will be listed soon.</p><p class="note">Guests travelling from outside Gauteng: we will share options near the venue.</p></div>
   </section>
 
   <!-- Directions -->
@@ -433,7 +433,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="kicker">FINDING YOUR WAY</p>
     <h2 id="dir-h">Directions</h2>
     <div class="short-rule"></div>
-    <div class="empty" id="dir-empty" hidden><p>The venue in Gauteng will be announced with the official invitation.</p><p class="note">Directions, maps and parking details will appear here.</p></div>
+    <div class="empty" id="dir-empty" hidden><p>The venue in Gauteng will be announced soon.</p><p class="note">Directions, maps and parking details will appear here.</p></div>
     <div class="venue" id="dir-venue">
       <span class="label">VENUE</span>
       <p class="name" data-k="venueName"></p>
@@ -479,11 +479,11 @@ footer .credit b { font-weight: 600; color: var(--ink); }
 <script>
 /* =========================================================
    SITE DETAILS — everything guests see is set here.
-   Empty fields show "to follow with the official invitation".
+   Empty fields show "to follow" or a short "coming soon" note.
    ========================================================= */
 const SITE = {
   // SAMPLE DETAILS for preview. Replace with the couple's real details, or set a field to ""
-  // and that section shows "to follow with the official invitation". Set preview:false to hide the banner.
+  // and that section shows a short "coming soon" note. Set preview:false to hide the banner and the sample RSVP.
   preview: true,
   date: { y: 2026, m: 11, d: 14, hour: 10, minute: 0 },   // ceremony start, SAST
   ceremony: { time: "10:00", venue: "Suitability Gardens", note: "Gauteng" },
@@ -492,7 +492,7 @@ const SITE = {
   adultsOnly: "Strictly no children, please.",          // confirmed by the couple
 
   rsvpBy: "31 October 2026",
-  rsvpWhatsApp: "27820000000",       // sample number
+  rsvpEmail: "info@tsst.co.za",      // RSVPs open the guest's email app addressed here
   maxGuests: 2,
 
   venueName: "Suitability Gardens",
@@ -536,7 +536,8 @@ const SITE = {
 
 const $ = (id) => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
-const waLink = (text) => "https://wa.me/" + SITE.rsvpWhatsApp + "?text=" + encodeURIComponent(text);
+/* mailto: with CRLF line breaks, as email clients expect */
+const mailLink = (subject, text) => "mailto:" + SITE.rsvpEmail + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(text.replace(/\n/g, "\r\n"));
 
 $("preview-note").hidden = !SITE.preview;
 /* Simple text slots */
@@ -554,7 +555,7 @@ $("rsvp-adults").hidden = !SITE.adultsOnly;
 const derived = {
   adultsLine: SITE.adultsOnly ? "Adults only. " + SITE.adultsOnly : "",
   rsvpByLine: SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
-  rsvpNumberDisplay: "+" + SITE.rsvpWhatsApp
+  rsvpEmail: SITE.rsvpEmail
 };
 document.querySelectorAll("[data-k]").forEach(n => { n.textContent = derived[n.dataset.k] ?? SITE[n.dataset.k] ?? ""; });
 
@@ -569,7 +570,7 @@ function tick() {
 tick(); setInterval(tick, 30000);
 
 /* Registry cards */
-const registry = SITE.registry.filter(r => !r.whatsapp || SITE.rsvpWhatsApp);
+const registry = SITE.registry;
 const wl = SITE.wishlist;
 if (wl && wl.link) {
   const c = el("article", "card");
@@ -587,9 +588,9 @@ registry.forEach(r => {
   const c = el("article", "card");
   c.append(el("span", "meta", r.meta), el("h3", null, r.title));
   if (r.text) c.append(el("p", null, r.text));
-  if (r.link || r.whatsapp) {
+  if (r.link) {
     const a = el("a", "btn ghost", r.cta);
-    a.href = r.link || waLink(r.whatsapp); a.target = "_blank"; a.rel = "noopener";
+    a.href = r.link; a.target = "_blank"; a.rel = "noopener";
     c.append(a);
   }
   $("registry-cards").append(c);
@@ -627,7 +628,7 @@ $("waze").href = "https://waze.com/ul?navigate=yes&q=" + encodeURIComponent(plac
   const dates = timed
     ? fmt(new Date(target)) + "/" + fmt(new Date(target + 12 * 36e5))
     : day(SITE.date.y, SITE.date.m, SITE.date.d) + "/" + day(SITE.date.y, SITE.date.m, SITE.date.d + 1);
-  const details = ["You are cordially invited to the wedding of Modiri and Phemelo. The official invitation will follow.", times.join(" · ")].filter(Boolean).join("\n");
+  const details = ["You are cordially invited to the wedding of Modiri and Phemelo.", times.join(" · ")].filter(Boolean).join("\n");
   const cal = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
     action: "TEMPLATE", text: "Modiri & Phemelo's Wedding", dates, details, location: place || "Gauteng Province"
   });
@@ -638,8 +639,8 @@ SITE.routes.forEach(r => {
   $("routes").append(li);
 });
 
-/* RSVP: open once a reply number is set */
-if (!SITE.rsvpWhatsApp) { $("rsvp-closed").hidden = false; $("rsvp-form").hidden = true; $("hero-rsvp").hidden = true; }
+/* RSVP: open once a reply address is set */
+if (!SITE.rsvpEmail) { $("rsvp-closed").hidden = false; $("rsvp-form").hidden = true; $("hero-rsvp").hidden = true; }
 for (let i = 1; i <= SITE.maxGuests; i++) {
   const o = el("option", null, i === 1 ? "1 (just me)" : String(i)); o.value = i; $("f-guests").append(o);
 }
@@ -687,7 +688,7 @@ form.addEventListener("submit", (ev) => {
   ].filter(Boolean).join("\n");
   const first = name.split(" ")[0];
   $("summary").textContent = text;
-  $("wa-link").href = waLink(text);
+  $("mail-link").href = mailLink("RSVP · " + name + " · Modiri & Phemelo · 14 November 2026", text);
   $("done-title").textContent = yes ? "THANK YOU" : "YOU WILL BE MISSED";
   $("done-msg").textContent = yes
     ? first + ", one last step: send your reply to the couple."
