@@ -499,11 +499,11 @@ const SITE = {
     { title: "Wishing Well", meta: "ON THE DAY", text: "A wishing well will stand at the reception for cards and envelopes." }
   ],
 
-  stayNote: "A few places close to the venue. Mention the Modiri & Phemelo wedding when booking.",
+  stayNote: "Places to stay near the venue, suggested by the family. Call ahead to book and mention the Modiri & Phemelo wedding.",
   stays: [
-    { name: "Pearl Manor Guesthouse", meta: "≈ 4 KM · R950–R1 300 / NIGHT", text: "Eight quiet garden rooms with breakfast. Walking distance to the shuttle.", link: "" },
-    { name: "Grand Oak Hotel", meta: "≈ 9 KM · R1 600–R2 200 / NIGHT", text: "Pool, restaurant and a group rate held for wedding guests until 31 October.", link: "" },
-    { name: "Bronze Oak Lodge", meta: "≈ 15 KM · R1 100–R1 500 / NIGHT", text: "Self-catering cottages, good for families and longer stays.", link: "" }
+    { name: "KwaZikode BnB", meta: "MEYERTON", text: "Bed and breakfast in Meyerton.", phone: "064 006 0126", link: "https://g.co/kgs/tyFoiwU" },
+    { name: "Merchant Business Class Hotel", meta: "MEYERTON", text: "Business-class hotel in Meyerton.", phone: "016 366 7878", link: "https://g.co/kgs/VTV3Jj8" },
+    { name: "Arcon Park Guest House", meta: "ARCON PARK, VEREENIGING", text: "Guest house in Arcon Park, Vereeniging.", phone: "073 870 0310", link: "https://g.co/kgs/bvLcWSY" }
   ]
 };
 
@@ -557,10 +557,15 @@ $("stay-empty").hidden = SITE.stays.length > 0;
 SITE.stays.forEach(s => {
   const c = el("article", "card");
   c.append(el("span", "meta", s.meta), el("h3", null, s.name), el("p", null, s.text));
-  const a = el("a", "btn ghost", s.link ? "VIEW & BOOK" : "FIND ON MAPS");
+  const a = el("a", "btn ghost", s.link ? "VIEW DETAILS" : "FIND ON MAPS");
   a.href = s.link || "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(s.name + " " + SITE.venueAddress);
   a.target = "_blank"; a.rel = "noopener";
   c.append(a);
+  if (s.phone) {   // South African number as written, dialled as +27 without the leading 0
+    const t = el("a", "btn", "CALL " + s.phone);
+    t.href = "tel:+27" + s.phone.replace(/\D/g, "").replace(/^0/, "");
+    c.append(t);
+  }
   $("stay-cards").append(c);
 });
 
