@@ -9,6 +9,7 @@ const SECRET = "PASTE_SECRET_HERE";   // must match APPS_SCRIPT_SECRET in Vercel
 const REPLY_TO = "";                  // where guests' replies to the confirmation go. Blank = the owner of this script
 const DIGEST_TO = "";                 // who gets the daily digest. Blank = the owner of this script
 const SENDER_NAME = "Modiri & Phemelo";
+const RSVP_CONTACT = "Kago Gabaatlhole";   // named in the confirmation as the person to contact
 
 const EVENT = {
   couple: "Modiri & Phemelo",
@@ -143,7 +144,7 @@ function sendConfirmation(g) {
     : "Thank you for letting us know. We have received your reply and we will miss you on the day.";
   const details = yes ? [["Date", EVENT.date], ["Ceremony", EVENT.ceremony], ["Reception", EVENT.reception],
     ["Venue", EVENT.venue], ["Dress code", EVENT.dress], ["Please note", EVENT.adults]] : [];
-  const closing = "Need to change something? Just reply to this email and we will update your reservation.";
+  const closing = "Need to change something? Just reply to this email and we will update your reservation. You can also contact " + RSVP_CONTACT + " (RSVP).";
 
   const text = ["Dear " + first + ",", "", intro, "", "YOUR REPLY"].concat(rows.map(r => r[0] + ": " + r[1]))
     .concat(details.length ? ["", "THE DAY"].concat(details.map(r => r[0] + ": " + r[1])) : [])

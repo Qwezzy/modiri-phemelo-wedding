@@ -25,3 +25,10 @@ One-time setup, from the Google account that should own the sheet:
 
 Handing over to the couple: open the sheet > Share, or File > Make a copy from their account and repeat steps 1 to 5 there.
 Gmail sends up to about 100 confirmations a day from a free account. Event wording in the confirmation is at the top of `Code.gs`.
+
+## Logo files
+
+- `logo.svg`: monogram only (used by the favicon workflow and as the base artwork).
+- `logo-nav.svg`: monogram with "MODIRI WEDS PHEMELO" beside it, for the header.
+- `logo-full.svg`: monogram with the names stacked below, for the footer.
+The names are outlined from Cormorant SC, so they render the same on every device. No webfont needed.

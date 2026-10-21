@@ -165,7 +165,7 @@ h2 {
 .form { display: grid; gap: 18px; max-width: 460px; margin: 0 auto; }
 .field { display: grid; gap: 6px; min-width: 0; }
 .field > label, .field > .label { padding-left: 2px; }
-input[type=text], input[type=tel], select, textarea {
+input[type=text], input[type=tel], input[type=email], select, textarea {
   width: 100%; font: inherit; font-size: 18px; color: var(--ink);
   background: var(--field); border: 1px solid var(--edge); border-radius: 2px;
   padding: 11px 14px; outline: none; transition: border-color .15s, background .15s;
@@ -257,7 +257,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 footer { text-align: center; display: grid; gap: 6px; padding-top: 10px; }
 footer { justify-items: center; }
 .preview-note { margin: 0; text-align: center; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; color: var(--ink-soft); border: 1px dashed var(--rule); padding: 8px 12px; }
-footer .mp { width: 132px; height: auto; margin-bottom: 8px; }
+footer .mp { width: 210px; height: auto; margin-bottom: 14px; }
 footer p { margin: 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .24em; color: var(--ink-soft); }
 footer .credit { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .26em; }
 footer .credit b { font-weight: 600; color: var(--ink); }
@@ -281,7 +281,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
 
 <nav class="nav" aria-label="Sections">
   <div class="nav-inner">
-    <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="logo.svg" width="492" height="455" alt=""></a>
+    <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="logo-nav.svg" width="2257" height="706" alt=""></a>
     <div class="links">
       <a href="#rsvp">RSVP</a>
       <a href="#registry">REGISTRY</a>
@@ -347,6 +347,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="kicker" data-k="rsvpByLine"></p>
     <h2 id="rsvp-h">Kindly Reply</h2>
     <div class="short-rule"></div>
+    <p class="lead" id="rsvp-contact" style="margin:0 0 10px;font-style:normal;font-family:var(--display);font-size:16px;letter-spacing:.18em" hidden></p>
     <p class="lead" id="rsvp-adults" data-k="adultsLine" style="margin:0 0 24px" hidden></p>
 
     <div class="empty" id="rsvp-closed" hidden>
@@ -468,8 +469,8 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   </section>
 
   <footer>
-    <img class="mp" src="logo.svg" width="492" height="455" alt="Modiri and Phemelo monogram">
-    <p>MODIRI &amp; PHEMELO · 14.11.2026 · GAUTENG</p>
+    <img class="mp" src="logo-full.svg" width="940" height="1115" alt="Modiri weds Phemelo">
+    <p>14.11.2026 · GAUTENG</p>
     <p class="credit">CREATED BY <b>OB MEDIA SOLUTIONS</b></p>
   </footer>
 </main>
@@ -497,6 +498,7 @@ const SITE = {
   adultsOnly: "Strictly no children, please.",          // confirmed by the couple
 
   rsvpBy: "31 October 2026",
+  rsvpContact: { name: "Kago Gabaatlhole", phone: "" },   // shown as "RSVP: name"; phone [CONFIRM], leave "" until supplied
   rsvpEmail: "info@tsst.co.za",      // RSVPs land here via api/rsvp.js (also the address in the "send from your own email app" fallback)
   maxGuests: 2,
 
@@ -557,6 +559,12 @@ document.querySelectorAll("[data-ev]").forEach(n => {
 $("dress-line").hidden = !SITE.dressCode;
 $("adults-line").hidden = !SITE.adultsOnly;
 $("rsvp-adults").hidden = !SITE.adultsOnly;
+if (SITE.rsvpContact && SITE.rsvpContact.name) {
+  const rc = $("rsvp-contact"), ph = SITE.rsvpContact.phone;
+  rc.textContent = "RSVP: " + SITE.rsvpContact.name;
+  if (ph) { rc.append(" · "); const a = el("a", null, ph); a.href = "tel:+27" + ph.replace(/\D/g, "").replace(/^0/, ""); rc.append(a); }
+  rc.hidden = false;
+}
 const derived = {
   adultsLine: SITE.adultsOnly ? "Adults only. " + SITE.adultsOnly : "",
   rsvpByLine: SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
