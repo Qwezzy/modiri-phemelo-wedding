@@ -7,22 +7,21 @@ Static site (no build step). Edit the `SITE` block near the bottom of `index.htm
 - Set `preview: false` in `SITE` to remove the sample-details banner
 - Deploys to Vercel as a static site on every push to `main`
 
-## RSVP by email
+## RSVP to a Google Sheet
 
-`api/rsvp.js` is a Vercel serverless function. The form posts to `/api/rsvp`, which emails the reply to `info@tsst.co.za`
-(reply-to set to the guest) and sends the guest a confirmation. If the function is unreachable or not configured, the form
-shows an error with a "send from your own email app" mailto fallback, so no reply is lost.
+The form posts to `/api/rsvp` (Vercel function: validation, honeypot, rate limit), which passes the reply to a Google Apps Script
+web app (`apps-script/Code.gs`). The script adds the reply to the **RSVPs** sheet (one row per guest email, a repeat reply updates
+that row), emails the guest a confirmation, and sends the owner a daily 07:00 digest on days with new replies. A **Summary** tab
+totals replies, headcount and dietary needs. If the function or script is unreachable the form shows an error with a
+"send from your own email app" mailto fallback to `info@tsst.co.za` (set in `SITE.rsvpEmail`, change it to the couple's address).
 
-Set these in Vercel (Project > Settings > Environment Variables, Production), then redeploy:
+One-time setup, from the Google account that should own the sheet:
 
-| Variable | Value |
-|---|---|
-| `SMTP_HOST` | Mail server for the sending mailbox, e.g. the host from your tsst.co.za mailbox settings |
-| `SMTP_PORT` | `465` (TLS, default) or `587` (STARTTLS) |
-| `SMTP_USER` | Mailbox login, normally `info@tsst.co.za` |
-| `SMTP_PASS` | That mailbox's password (or an app password) |
-| `MAIL_FROM` | Optional. Default `Modiri & Phemelo <info@tsst.co.za>` |
-| `RSVP_TO` | Optional. Default `info@tsst.co.za` |
+1. script.google.com > New project. Paste `apps-script/Code.gs`, replace `PASTE_SECRET_HERE` with a long random string.
+2. Run `setup` (authorise when asked). It creates the sheet and the Summary tab; the link is in the execution log.
+3. Optional: run `testRsvp` to add a TEST row and receive a confirmation. Delete the row afterwards.
+4. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone. Copy the `/exec` URL.
+5. In Vercel (Production) set `APPS_SCRIPT_URL` to that URL and `APPS_SCRIPT_SECRET` to the same random string, then redeploy.
 
-Event wording in the confirmation email (date, times, venue, dress code) is fixed at the top of `api/rsvp.js`. Update it there
-if the details change. Basic protection: same-site requests only, a hidden honeypot field, input length limits and a per-IP rate limit.
+Handing over to the couple: open the sheet > Share, or File > Make a copy from their account and repeat steps 1 to 5 there.
+Gmail sends up to about 100 confirmations a day from a free account. Event wording in the confirmation is at the top of `Code.gs`.
