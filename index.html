@@ -8,8 +8,8 @@
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/png" href="favicon.png">
 <meta property="og:title" content="Modiri &amp; Phemelo">
-<meta property="og:description" content="Save the date: 14 November 2026, Gauteng.">
-<meta property="og:image" content="save-the-date.jpg">
+<meta property="og:description" content="You are cordially invited to the wedding of Modiri and Phemelo. 14 November 2026, Gauteng.">
+<meta property="og:image" content="invitation.jpg">
 <style>html{color-scheme:dark;background:#020202}img{max-width:100%}</style>
 </head>
 <body>
@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&display=swap">
 <style>
-/* Layout: the save-the-date envelope as the opening card, then each section set as its own
+/* Layout: the invitation envelope as the opening card, then each section set as its own
    piece of ivory stationery inside a double hairline frame, stacked down a single column.
    Deliberately one light look (paper stock), so no dark-theme blocks. */
 [hidden] { display: none !important; }
@@ -295,9 +295,9 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   <p class="preview-note" id="preview-note" hidden>SAMPLE DETAILS · FOR PREVIEW ONLY</p>
 
   <!-- Hero: the couple's artwork as supplied -->
-  <section class="sheet hero" aria-label="Save the date">
-    <img src="save-the-date.jpg" width="1254" height="1254"
-         alt="Save the date. Modiri weds Phemelo, 14 November 2026, Gauteng Province. The official invitation to follow.">
+  <section class="sheet hero" aria-label="Invitation">
+    <img src="invitation.jpg" width="1254" height="1254"
+         alt="You are cordially invited to Modiri weds Phemelo, 14 November 2026, Gauteng Province. The official invitation to follow. Strictly no kids allowed.">
     <div class="hero-foot">
       <p class="kicker">SATURDAY · 14 NOVEMBER 2026</p>
       <div class="countdown" id="countdown" aria-live="off">
@@ -307,7 +307,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       </div>
       <div class="btn-row">
         <a class="btn" id="hero-rsvp" href="#rsvp">KINDLY REPLY</a>
-        <a class="btn ghost" id="hero-cal" href="#" target="_blank" rel="noopener">SAVE TO CALENDAR</a>
+        <a class="btn ghost" id="hero-cal" href="#" target="_blank" rel="noopener">ADD TO CALENDAR</a>
       </div>
     </div>
   </section>
@@ -627,7 +627,7 @@ $("waze").href = "https://waze.com/ul?navigate=yes&q=" + encodeURIComponent(plac
   const dates = timed
     ? fmt(new Date(target)) + "/" + fmt(new Date(target + 12 * 36e5))
     : day(SITE.date.y, SITE.date.m, SITE.date.d) + "/" + day(SITE.date.y, SITE.date.m, SITE.date.d + 1);
-  const details = ["Save the date. The official invitation will follow.", times.join(" · ")].filter(Boolean).join("\n");
+  const details = ["You are cordially invited to the wedding of Modiri and Phemelo. The official invitation will follow.", times.join(" · ")].filter(Boolean).join("\n");
   const cal = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
     action: "TEMPLATE", text: "Modiri & Phemelo's Wedding", dates, details, location: place || "Gauteng Province"
   });
