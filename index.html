@@ -209,6 +209,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 .card p { margin: 0; font-size: 17px; line-height: 1.45; }
 .card .meta { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .18em; color: var(--ink-soft); }
 .card .btn { margin-top: 8px; justify-self: center; }
+.vouchers { margin-top: 38px; display: grid; gap: 14px; }
+.vouchers .lead { margin: 0 auto 10px; }
+.fine { font-size: 15px !important; font-style: italic; color: var(--ink-soft); }
 .copyline { display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
 .copyline code { font-family: var(--serif); font-size: 17px; background: var(--field); padding: 4px 10px; border: 1px solid var(--rule); user-select: all; }
 
@@ -406,7 +409,12 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <h2 id="reg-h">Gift Registry</h2>
     <p class="lead" data-k="registryNote"></p>
     <div class="short-rule"></div>
-    <div class="cards" id="registry-cards"></div>
+    <div class="cards" id="wishlist-card"></div>
+    <div class="vouchers" id="vouchers">
+      <p class="kicker">STORE VOUCHERS</p>
+      <p class="lead" data-k="vouchersNote"></p>
+      <div class="cards" id="registry-cards"></div>
+    </div>
     <div class="empty" id="registry-empty" hidden><p>Registry details will be shared with the official invitation.</p></div>
   </section>
 
@@ -498,14 +506,24 @@ const SITE = {
     { from: "Arrival", text: "Please be seated by 09:45. The ceremony begins at 10:00." }
   ],
 
-  registryNote: "Your presence is the greatest gift. If you would like to bless our new home, we accept vouchers from these stores.",
+  registryNote: "Your presence is the greatest gift. If you would like to bless our new home, you are welcome to choose a gift from our wishlist, or give a store voucher instead.",
+  // Wishlist reference page (items live in wishlist.json). Not a shop, so the card says so.
+  wishlist: {
+    meta: "CARROL BOYES · GIFT IDEAS",
+    title: "Bride & Groom Wishlist Reference",
+    text: "Pictures and prices of gifts we would appreciate.",
+    fine: "Not an online store. No purchases can be made there. It is a reference only.",
+    link: "wishlist.html",
+    cta: "VIEW WISHLIST"
+  },
+  vouchersNote: "Store vouchers from these retailers would also be appreciated. Whether you choose a gift or a voucher is entirely up to you.",
   registry: [
-    { title: "Yuppiechef", meta: "GIFT REGISTRY OR VOUCHER", link: "https://www.yuppiechef.com/yc9923067", cta: "VIEW REGISTRY" },
-    { title: "Mr Price Home", meta: "GIFT VOUCHER" },
-    { title: "@home", meta: "GIFT VOUCHER" },
-    { title: "Pep Home", meta: "GIFT VOUCHER" },
-    { title: "JET Home", meta: "GIFT VOUCHER" },
-    { title: "Le Creuset", meta: "GIFT VOUCHER" }
+    { title: "Mr Price Home", meta: "STORE VOUCHER" },
+    { title: "@Home", meta: "STORE VOUCHER" },
+    { title: "Yuppiechef", meta: "STORE VOUCHER OR GIFT REGISTRY", link: "https://www.yuppiechef.com/yc9923067", cta: "VIEW REGISTRY" },
+    { title: "PEP Home", meta: "STORE VOUCHER" },
+    { title: "Jet Home", meta: "STORE VOUCHER" },
+    { title: "Le Creuset", meta: "STORE VOUCHER" }
   ],
 
   stayNote: "Places to stay near the venue, suggested by the family. Call ahead to book and mention the Modiri & Phemelo wedding.",
@@ -552,7 +570,19 @@ tick(); setInterval(tick, 30000);
 
 /* Registry cards */
 const registry = SITE.registry.filter(r => !r.whatsapp || SITE.rsvpWhatsApp);
-$("registry-empty").hidden = registry.length > 0;
+const wl = SITE.wishlist;
+if (wl && wl.link) {
+  const c = el("article", "card");
+  c.append(el("span", "meta", wl.meta), el("h3", null, wl.title));
+  if (wl.text) c.append(el("p", null, wl.text));
+  if (wl.fine) c.append(el("p", "fine", wl.fine));
+  const a = el("a", "btn", wl.cta || "VIEW WISHLIST");
+  a.href = wl.link;
+  c.append(a);
+  $("wishlist-card").append(c);
+}
+$("vouchers").hidden = registry.length === 0;
+$("registry-empty").hidden = registry.length > 0 || !!(wl && wl.link);
 registry.forEach(r => {
   const c = el("article", "card");
   c.append(el("span", "meta", r.meta), el("h3", null, r.title));
