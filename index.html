@@ -332,6 +332,10 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       <span class="label">DRESS CODE</span>
       <p data-k="dressCode"></p>
     </div>
+    <div class="dress" id="adults-line" hidden>
+      <span class="label">ADULTS ONLY</span>
+      <p data-k="adultsOnly"></p>
+    </div>
   </section>
 
   <!-- RSVP -->
@@ -339,6 +343,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="kicker" data-k="rsvpByLine"></p>
     <h2 id="rsvp-h">Kindly Reply</h2>
     <div class="short-rule"></div>
+    <p class="lead" id="rsvp-adults" data-k="adultsLine" style="margin:0 0 24px" hidden></p>
 
     <div class="empty" id="rsvp-closed" hidden>
       <p>RSVPs open with the official invitation.</p>
@@ -472,10 +477,11 @@ const SITE = {
   // SAMPLE DETAILS for preview. Replace with the couple's real details, or set a field to ""
   // and that section shows "to follow with the official invitation". Set preview:false to hide the banner.
   preview: true,
-  date: { y: 2026, m: 11, d: 14, hour: 15, minute: 0 },   // ceremony start, SAST
-  ceremony: { time: "15:00", venue: "Suitability Gardens", note: "Gauteng" },
-  reception: { time: "17:30 – Late", venue: "The Grand Ballroom", note: "Dinner, Drinks & Dancing" },
-  dressCode: "Black tie · ivory, champagne & gold",     // sample, not on the card
+  date: { y: 2026, m: 11, d: 14, hour: 10, minute: 0 },   // ceremony start, SAST
+  ceremony: { time: "10:00", venue: "Suitability Gardens", note: "Gauteng" },
+  reception: { time: "14:00", venue: "Suitability Gardens", note: "" },
+  dressCode: "All black",                                // confirmed by the couple
+  adultsOnly: "Strictly no children, please.",          // confirmed by the couple
 
   rsvpBy: "31 October 2026",
   rsvpWhatsApp: "27820000000",       // sample number
@@ -489,14 +495,17 @@ const SITE = {
     { from: "From OR Tambo", text: "About 1 hour by road. Allow extra time for Saturday traffic." },
     { from: "From Sandton", text: "About 50 minutes. Use the navigation buttons above for the live route." },
     { from: "Parking", text: "Secure parking on site with car guards." },
-    { from: "Arrival", text: "Please be seated by 14:45. The ceremony begins at 15:00." }
+    { from: "Arrival", text: "Please be seated by 09:45. The ceremony begins at 10:00." }
   ],
 
-  registryNote: "Your presence is the greatest gift. For those who have asked, here are a few ways to bless our new home.",
+  registryNote: "Your presence is the greatest gift. If you would like to bless our new home, we accept vouchers from these stores.",
   registry: [
-    { title: "Yuppiechef Registry", meta: "HOME & KITCHEN", text: "Cookware, linen and the little things for our first home, delivered to us.", link: "https://www.yuppiechef.com/registry", cta: "VIEW REGISTRY" },
-    { title: "Honeymoon Fund", meta: "ZANZIBAR · 10 NIGHTS", text: "Help us towards sunset dhow cruises and slow mornings in Stone Town.", whatsapp: "Hello, please may I have the banking details for the Modiri & Phemelo honeymoon fund?", cta: "REQUEST DETAILS" },
-    { title: "Wishing Well", meta: "ON THE DAY", text: "A wishing well will stand at the reception for cards and envelopes." }
+    { title: "Mr Price Home", meta: "GIFT VOUCHER" },
+    { title: "@home", meta: "GIFT VOUCHER" },
+    { title: "Yuppiechef", meta: "GIFT VOUCHER" },
+    { title: "Pep Home", meta: "GIFT VOUCHER" },
+    { title: "JET Home", meta: "GIFT VOUCHER" },
+    { title: "Le Creuset", meta: "GIFT VOUCHER" }
   ],
 
   stayNote: "Places to stay near the venue, suggested by the family. Call ahead to book and mention the Modiri & Phemelo wedding.",
@@ -513,7 +522,7 @@ const waLink = (text) => "https://wa.me/" + SITE.rsvpWhatsApp + "?text=" + encod
 
 $("preview-note").hidden = !SITE.preview;
 /* Simple text slots */
-const times = [SITE.ceremony.time && "Ceremony " + SITE.ceremony.time, SITE.reception.time && "Reception " + SITE.reception.time, SITE.dressCode].filter(Boolean);
+const times = [SITE.ceremony.time && "Ceremony " + SITE.ceremony.time, SITE.reception.time && "Reception " + SITE.reception.time, SITE.dressCode && "Dress code: " + SITE.dressCode, SITE.adultsOnly && "Adults only. " + SITE.adultsOnly].filter(Boolean);
 document.querySelectorAll("[data-ev]").forEach(n => {
   const [k, f] = n.dataset.ev.split(".");
   const v = SITE[k][f];
@@ -522,7 +531,10 @@ document.querySelectorAll("[data-ev]").forEach(n => {
   else n.hidden = true;
 });
 $("dress-line").hidden = !SITE.dressCode;
+$("adults-line").hidden = !SITE.adultsOnly;
+$("rsvp-adults").hidden = !SITE.adultsOnly;
 const derived = {
+  adultsLine: SITE.adultsOnly ? "Adults only. " + SITE.adultsOnly : "",
   rsvpByLine: SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
   rsvpNumberDisplay: "+" + SITE.rsvpWhatsApp
 };
@@ -543,7 +555,8 @@ const registry = SITE.registry.filter(r => !r.whatsapp || SITE.rsvpWhatsApp);
 $("registry-empty").hidden = registry.length > 0;
 registry.forEach(r => {
   const c = el("article", "card");
-  c.append(el("span", "meta", r.meta), el("h3", null, r.title), el("p", null, r.text));
+  c.append(el("span", "meta", r.meta), el("h3", null, r.title));
+  if (r.text) c.append(el("p", null, r.text));
   if (r.link || r.whatsapp) {
     const a = el("a", "btn ghost", r.cta);
     a.href = r.link || waLink(r.whatsapp); a.target = "_blank"; a.rel = "noopener";
