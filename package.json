@@ -1,0 +1,7 @@
+{
+  "name": "modiri-phemelo-wedding",
+  "private": true,
+  "description": "Wedding site for Modiri and Phemelo. Static pages plus one serverless function (api/rsvp.js) that emails RSVPs.",
+  "engines": { "node": ">=20" },
+  "dependencies": { "nodemailer": "^6.9.16" }
+}
