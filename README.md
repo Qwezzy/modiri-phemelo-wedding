@@ -26,6 +26,17 @@ One-time setup, from the Google account that should own the sheet:
 Handing over to the couple: open the sheet > Share, or File > Make a copy from their account and repeat steps 1 to 5 there.
 Gmail sends up to about 100 confirmations a day from a free account. Event wording in the confirmation is at the top of `Code.gs`.
 
+### Approving guests (access control)
+
+With `APPROVAL = true` in `Code.gs`, every "Yes" reply starts as **Pending** in the **Status** column. The couple open the sheet and set
+Status to **Approved** or **Declined** from the dropdown. The guest is then emailed the decision (once per decision; the **Guest emailed**
+column records it). A guest who changes "attending" or the head count goes back to Pending. The Summary tab counts Pending, Approved and
+Declined, and the daily digest says how many are waiting. Set `SEND_DECLINE_EMAIL = false` to approve silently and not email declines.
+
+To switch it on after updating the script: run `setup` (adds the Status columns and installs the edit trigger), deploy a **new version** of the
+existing web app (Deploy > Manage deployments > pencil > New version, so the `/exec` URL stays), then set `approval: true` in `SITE` in `index.html`
+so the thank-you screen says the couple will confirm by email. The site also asks guests not to share the link and is set to `noindex`.
+
 ## Logo files
 
 - `logo.svg`: monogram only (used by the favicon workflow and as the base artwork).

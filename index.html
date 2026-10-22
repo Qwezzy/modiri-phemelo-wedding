@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Modiri &amp; Phemelo</title>
 <meta name="description" content="Modiri weds Phemelo. 14 November 2026, Gauteng. RSVP, registry, places to stay, directions and gallery.">
+<meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="canonical" href="https://modiriwedsphemelo.co.za/">
@@ -268,8 +269,6 @@ footer { justify-items: center; }
 footer .mp { width: 210px; height: auto; margin-bottom: 14px; }
 footer p { margin: 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .24em; color: var(--ink-soft); }
 footer .credit { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .26em; }
-.share { margin: 26px 0 8px; padding-top: 18px; border-top: 1px solid var(--rule); text-align: center; }
-.share .btn-row { margin-top: 12px; }
 footer .credit a { color: inherit; text-decoration: none; }
 footer .credit a:hover, footer .credit a:focus-visible { color: var(--ink); }
 footer .credit b { font-weight: 600; color: var(--ink); }
@@ -361,6 +360,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <div class="short-rule"></div>
     <p class="lead" id="rsvp-contact" style="margin:0 0 10px;font-style:normal;font-family:var(--display);font-size:16px;letter-spacing:.18em" hidden></p>
     <p class="lead" id="rsvp-adults" data-k="adultsLine" style="margin:0 0 24px" hidden></p>
+    <p class="note personal" id="rsvp-personal" style="margin:0 0 24px;text-align:center">This invitation is personal. Please reply only for the guests invited on it, and do not share this link with anyone.</p>
 
     <div class="empty" id="rsvp-closed" hidden>
       <p>RSVPs will open shortly.</p>
@@ -417,15 +417,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       <p id="done-msg"></p>
       <p class="note" id="done-conf"></p>
       <div class="summary" id="summary"></div>
-      <div class="share" id="share">
-        <p class="note">Passing the invitation on? Please share it only with people we have invited.</p>
-        <div class="btn-row">
-          <button class="btn ghost" type="button" id="share-native" hidden>SHARE THE INVITATION</button>
-          <a class="btn ghost" id="share-wa" target="_blank" rel="noopener">SHARE ON WHATSAPP</a>
-          <button class="btn ghost" type="button" id="share-copy">COPY LINK</button>
-        </div>
-        <p class="note" id="share-msg" role="status"></p>
-      </div>
+      <p class="note personal" style="text-align:center">Please do not share this link with anyone.</p>
       <button class="textlink" type="button" id="edit-btn">Change my reply</button>
     </div>
   </section>
@@ -512,6 +504,7 @@ const SITE = {
   // SAMPLE DETAILS for preview. Replace with the couple's real details, or set a field to ""
   // and that section shows a short "coming soon" note. Set preview:false to hide the banner and the sample RSVP.
   preview: false,
+  approval: false,   // true once the RSVP script has the approval step: the couple approve each reply in the sheet and guests are emailed
   date: { y: 2026, m: 11, d: 14, hour: 10, minute: 0 },   // ceremony start, SAST
   ceremony: { time: "10:00", venue: "Suitability Gardens", note: "Gauteng" },
   reception: { time: "14:00", venue: "Suitability Gardens", note: "" },
@@ -738,11 +731,15 @@ form.addEventListener("submit", async (ev) => {
     $("summary").textContent = text;
     $("done-title").textContent = yes ? "THANK YOU" : "YOU WILL BE MISSED";
     $("done-msg").textContent = yes
-      ? first + ", thank you. We have sent your RSVP and your reservation is done."
+      ? (SITE.approval
+          ? first + ", thank you. We have received your RSVP. The couple will review it and email you once your place is confirmed."
+          : first + ", thank you. We have sent your RSVP and your reservation is done.")
       : first + ", thank you for letting us know. We have received your reply.";
     $("done-conf").textContent = out.confirmation === false
-      ? "We could not email your confirmation, but your reply has reached the couple. Please keep this page for your records."
-      : "A confirmation is on its way to " + email + ". If it does not arrive, please check your spam folder.";
+      ? "We could not email you a receipt, but your reply has reached the couple. Please keep this page for your records."
+      : (SITE.approval && yes
+          ? "A receipt is on its way to " + email + ". Your place is confirmed only when you receive the approval email. If nothing arrives, please check your spam folder."
+          : "A confirmation is on its way to " + email + ". If it does not arrive, please check your spam folder.");
     form.hidden = true; $("done").hidden = false;
     try { localStorage.removeItem(DRAFT); } catch (_) {}
     $("rsvp").scrollIntoView({ block: "start" });
@@ -755,25 +752,6 @@ form.addEventListener("submit", async (ev) => {
   }
 });
 $("edit-btn").addEventListener("click", () => { $("done").hidden = true; form.hidden = false; });
-
-// Share the invitation (offered after a guest has replied). Always shares the main web address, never a preview link.
-const SHARE_URL = "https://modiriwedsphemelo.co.za/";
-const SHARE_TEXT = "You are invited to the wedding of Modiri & Phemelo, 14 November 2026. Details and RSVP: ";
-$("share-wa").href = "https://wa.me/?text=" + encodeURIComponent(SHARE_TEXT + SHARE_URL);
-if (navigator.share) {
-  $("share-native").hidden = false; $("share-wa").hidden = true;   // the phone's own share sheet already lists WhatsApp
-  $("share-native").addEventListener("click", () => {
-    navigator.share({ title: "Modiri & Phemelo", text: SHARE_TEXT.trim(), url: SHARE_URL }).catch(() => {});
-  });
-}
-$("share-copy").addEventListener("click", async () => {
-  let ok = false;
-  try { await navigator.clipboard.writeText(SHARE_URL); ok = true; } catch (e) {}
-  if (!ok) {
-    try { const t = document.createElement("textarea"); t.value = SHARE_URL; document.body.appendChild(t); t.select(); ok = document.execCommand("copy"); t.remove(); } catch (e) {}
-  }
-  $("share-msg").textContent = ok ? "Link copied." : "Copy this link: " + SHARE_URL;
-});
 
 /* Gallery: photos listed in gallery.json, published alongside this page */
 let photos = [], current = 0;
