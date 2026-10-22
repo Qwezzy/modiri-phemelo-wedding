@@ -9,6 +9,8 @@ const SECRET = "PASTE_SECRET_HERE";   // must match APPS_SCRIPT_SECRET in Vercel
 const REPLY_TO = "";                  // where guests' replies to the confirmation go. Blank = the owner of this script
 const DIGEST_TO = "";                 // who gets the daily digest. Blank = the owner of this script
 const SENDER_NAME = "Modiri & Phemelo";
+const LOGO_URL = "https://modiriwedsphemelo.co.za/email-logo.png";   // hosted with the website
+const CREDIT_EMAIL = "phasha@obmediasolutions.co.za";
 const RSVP_CONTACT = "Kago Gabaatlhole";   // named in the confirmation as the person to contact
 
 const EVENT = {
@@ -148,18 +150,19 @@ function sendConfirmation(g) {
 
   const text = ["Dear " + first + ",", "", intro, "", "YOUR REPLY"].concat(rows.map(r => r[0] + ": " + r[1]))
     .concat(details.length ? ["", "THE DAY"].concat(details.map(r => r[0] + ": " + r[1])) : [])
-    .concat(["", closing, "", "With love,", EVENT.couple]).join("\n");
+    .concat(["", closing, "", "With love,", EVENT.couple, "", "Created by OB Media Solutions: " + CREDIT_EMAIL]).join("\n");
 
   const tr = r => '<tr><td style="padding:4px 14px 4px 0;color:#9a9a9a;font-size:13px;letter-spacing:.08em;text-transform:uppercase;vertical-align:top">' + esc(r[0]) + '</td><td style="padding:4px 0;color:#e6e6e6;font-size:16px">' + esc(r[1]) + "</td></tr>";
   const html = '<div style="background:#020202;padding:0"><div style="max-width:520px;margin:0 auto;padding:36px 24px;background:#141414;color:#d8d8d8;font-family:Georgia,\'Times New Roman\',serif;line-height:1.55">' +
-    '<p style="margin:0 0 6px;text-align:center;font-size:12px;letter-spacing:.3em;color:#b4b4b4">14 NOVEMBER 2026 · GAUTENG</p>' +
-    '<h1 style="margin:0 0 22px;text-align:center;font-weight:normal;font-size:26px;letter-spacing:.14em;color:#f2f2f2">MODIRI &amp; PHEMELO</h1>' +
+    '<p style="margin:0 0 14px;text-align:center"><img src="' + LOGO_URL + '" width="200" alt="Modiri weds Phemelo" style="display:inline-block;width:200px;max-width:100%;height:auto;border:0"></p>' +
+    '<p style="margin:0 0 26px;text-align:center;font-size:12px;letter-spacing:.3em;color:#b4b4b4">14 NOVEMBER 2026 · GAUTENG</p>' +
     '<p style="margin:0 0 14px;font-size:17px">Dear ' + esc(first) + ",</p>" +
     '<p style="margin:0 0 22px;font-size:17px">' + esc(intro) + "</p>" +
     '<p style="margin:0 0 6px;font-size:12px;letter-spacing:.24em;color:#b4b4b4">YOUR REPLY</p><table role="presentation" style="border-collapse:collapse;margin-bottom:22px">' + rows.map(tr).join("") + "</table>" +
     (details.length ? '<p style="margin:0 0 6px;font-size:12px;letter-spacing:.24em;color:#b4b4b4">THE DAY</p><table role="presentation" style="border-collapse:collapse;margin-bottom:22px">' + details.map(tr).join("") + "</table>" : "") +
     '<p style="margin:0 0 22px;font-size:16px;color:#b4b4b4;font-style:italic">' + esc(closing) + "</p>" +
-    '<p style="margin:0;font-size:17px">With love,<br>' + esc(EVENT.couple) + "</p></div></div>";
+    '<p style="margin:0 0 28px;font-size:17px">With love,<br>' + esc(EVENT.couple) + "</p>" +
+    '<p style="margin:0;padding-top:16px;border-top:1px solid #2a2a2a;text-align:center;font-size:11px;letter-spacing:.26em"><a href="mailto:' + CREDIT_EMAIL + '" style="color:#9a9a9a;text-decoration:none">CREATED BY <b style="color:#d8d8d8">OB MEDIA SOLUTIONS</b></a></p></div></div>';
 
   const opts = { to: g.email, subject: "Your RSVP is confirmed · " + EVENT.couple, body: text, htmlBody: html, name: SENDER_NAME };
   if (REPLY_TO) opts.replyTo = REPLY_TO;
