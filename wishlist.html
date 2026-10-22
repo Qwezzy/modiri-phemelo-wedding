@@ -74,6 +74,8 @@ footer { text-align: center; display: grid; gap: 6px; justify-items: center; pad
 footer .mp { width: 210px; height: auto; margin-bottom: 14px; }
 footer p { margin: 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .24em; color: var(--ink-soft); }
 footer .credit { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 12px; letter-spacing: .26em; }
+footer .credit a { color: inherit; text-decoration: none; }
+footer .credit a:hover, footer .credit a:focus-visible { color: var(--ink); }
 footer .credit b { font-weight: 600; color: var(--ink); }
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   h1 { background: var(--silver); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
@@ -110,7 +112,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   <footer>
     <img class="mp" src="logo-full.svg" width="940" height="1115" alt="Modiri weds Phemelo">
     <p>14.11.2026 · GAUTENG</p>
-    <p class="credit">CREATED BY <b>OB MEDIA SOLUTIONS</b></p>
+    <p class="credit"><a href="mailto:phasha@obmediasolutions.co.za">CREATED BY <b>OB MEDIA SOLUTIONS</b></a></p>
   </footer>
 </main>
 
