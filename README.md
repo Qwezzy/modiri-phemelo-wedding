@@ -13,7 +13,7 @@ The form posts to `/api/rsvp` (Vercel function: validation, honeypot, rate limit
 web app (`apps-script/Code.gs`). The script adds the reply to the **RSVPs** sheet (one row per guest email, a repeat reply updates
 that row), emails the guest a confirmation, and sends the owner a daily 07:00 digest on days with new replies. A **Summary** tab
 totals replies, headcount and dietary needs. If the function or script is unreachable the form shows an error with a
-"send from your own email app" mailto fallback to `info@tsst.co.za` (set in `SITE.rsvpEmail`, change it to the couple's address).
+"send from your own email app" mailto fallback to `phasha8@gmail.com` (the couple's address, set in `SITE.rsvpEmail`).
 
 One-time setup, from the Google account that should own the sheet:
 
