@@ -364,8 +364,8 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <p class="note personal" id="rsvp-personal" style="margin:0 0 24px;text-align:center">This invitation is personal. Please reply only for the guests invited on it, and do not share this link with anyone.</p>
 
     <div class="empty" id="rsvp-closed" hidden>
-      <p>RSVPs will open shortly.</p>
-      <p class="note">Keep the date free. Reply details will appear here.</p>
+      <p id="rsvp-closed-msg">RSVPs will open shortly.</p>
+      <p class="note" id="rsvp-closed-note">Keep the date free. Reply details will appear here.</p>
     </div>
     <form class="form" id="rsvp-form" novalidate>
       <div class="field">
@@ -513,6 +513,7 @@ const SITE = {
   adultsOnly: "Strictly no children, please.",          // confirmed by the couple
 
   rsvpBy: "31 October 2026",
+  rsvpClosed: true,   // true = no further replies: the form is replaced by a closed notice and /api/rsvp refuses posts (see RSVP_CLOSED there)
   rsvpContact: { name: "Kago Gabaatlhole", phone: "" },   // shown as "RSVP: name"; phone [CONFIRM], leave "" until supplied
   rsvpEmail: "phasha8@gmail.com",     // only used in the "send from your own email app" fallback if the form cannot send
   maxGuests: 2,
@@ -582,7 +583,7 @@ if (SITE.rsvpContact && SITE.rsvpContact.name) {
 }
 const derived = {
   adultsLine: SITE.adultsOnly ? "Adults only. " + SITE.adultsOnly : "",
-  rsvpByLine: SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
+  rsvpByLine: SITE.rsvpClosed ? "RSVPS ARE CLOSED" : SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
   rsvpEmail: SITE.rsvpEmail
 };
 document.querySelectorAll("[data-k]").forEach(n => { n.textContent = derived[n.dataset.k] ?? SITE[n.dataset.k] ?? ""; });
@@ -667,8 +668,16 @@ SITE.routes.forEach(r => {
   $("routes").append(li);
 });
 
-/* RSVP: open once a reply address is set */
+/* RSVP: open once a reply address is set; closed for good once rsvpClosed is true */
 if (!SITE.rsvpEmail) { $("rsvp-closed").hidden = false; $("rsvp-form").hidden = true; $("hero-rsvp").hidden = true; }
+if (SITE.rsvpClosed) {
+  $("rsvp-closed-msg").textContent = "RSVPs are now closed.";
+  $("rsvp-closed-note").textContent = "We are no longer accepting replies. Only guests who RSVP\u2019d by "
+    + SITE.rsvpBy + " will be admitted on the day. Thank you for understanding.";
+  $("rsvp-closed").hidden = false;
+  ["rsvp-form", "hero-rsvp", "rsvp-contact", "rsvp-personal"].forEach(id => { $(id).hidden = true; });
+  try { localStorage.removeItem("mp-rsvp-draft"); } catch (_) {}
+}
 for (let i = 1; i <= SITE.maxGuests; i++) {
   const o = el("option", null, i === 1 ? "1 (just me)" : String(i)); o.value = i; $("f-guests").append(o);
 }
@@ -699,6 +708,7 @@ syncAttending();
 
 form.addEventListener("submit", async (ev) => {
   ev.preventDefault();
+  if (SITE.rsvpClosed) return;
   const f = Object.fromEntries(new FormData(form));
   const err = $("err"), name = (f.name || "").trim(), email = (f.email || "").trim();
   const fail = (msg, id) => { err.textContent = msg; err.hidden = false; $("err-fallback").hidden = true; if (id) $(id).focus(); };

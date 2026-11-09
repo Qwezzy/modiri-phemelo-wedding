@@ -9,6 +9,9 @@ Static site (no build step). Edit the `SITE` block near the bottom of `index.htm
 
 ## RSVP to a Google Sheet
 
+**RSVPs are closed (9 Nov 2026).** `rsvpClosed: true` in `SITE` swaps the form for a closed notice and hides the hero
+"Kindly Reply" button; `RSVP_CLOSED = true` in `api/rsvp.js` refuses every post. Set both back to `false` to reopen.
+
 The form posts to `/api/rsvp` (Vercel function: validation, honeypot, rate limit), which passes the reply to a Google Apps Script
 web app (`apps-script/Code.gs`). The script adds the reply to the **RSVPs** sheet (one row per guest email, a repeat reply updates
 that row), emails the guest a confirmation, and sends the owner a daily 07:00 digest on days with new replies. A **Summary** tab

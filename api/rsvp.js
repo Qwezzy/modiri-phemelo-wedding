@@ -4,6 +4,11 @@
      APPS_SCRIPT_URL      the web app's /exec URL
      APPS_SCRIPT_SECRET   shared secret, same value as SECRET in the script            */
 
+/* RSVPs closed on 9 Nov 2026 at the couple's request. Every post is refused, including from stale cached pages.
+   Status 400 with an error is deliberate: older copies of the page show that message as-is, without the mailto fallback. */
+const RSVP_CLOSED = true;
+const CLOSED_MSG = "RSVPs are now closed. Only guests who replied by 31 October 2026 will be admitted.";
+
 const MAX_GUESTS = 2;
 const DIETS = ["None", "Vegetarian", "Vegan", "Halaal", "No pork", "Allergy (see note)"];
 const EMAIL = /^[^\s@<>"',;:]+@[^\s@<>"',;:]+\.[^\s@<>"',;:]{2,}$/;
@@ -42,6 +47,7 @@ function parse(body) {
 module.exports = async function handler(req, res) {
   res.setHeader("Cache-Control", "no-store");
   if (req.method !== "POST") { res.setHeader("Allow", "POST"); return res.status(405).json({ ok: false, error: "Method not allowed." }); }
+  if (RSVP_CLOSED) return res.status(400).json({ ok: false, closed: true, error: CLOSED_MSG });
 
   /* Same-site requests only */
   const origin = req.headers.origin;
