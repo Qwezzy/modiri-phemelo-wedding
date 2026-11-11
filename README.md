@@ -4,6 +4,8 @@ Static site (no build step). Edit the `SITE` block near the bottom of `index.htm
 
 - `gallery.json` lists gallery photos (`{ "src": "photos/x.jpg", "thumb": "photos/thumb/x.jpg", "alt": "..." }`; `thumb` is optional, a ~640px version for the grid; `pos` is an optional CSS object-position such as "50% 20%" to keep faces in the square tile)
 - `wishlist.html` is the Bride & Groom Wishlist Reference (reference only, not a shop). Items live in `wishlist.json` as `{ "asOf": "October 2026", "items": [{ "name": "...", "price": 1159, "img": "wishlist/x.jpg", "alt": "...", "note": "optional" }] }`; `price` is rand as a number or a ready-made string
+- `wedding-photos.html` (also `/wedding-photos`) is the wedding-day photo page. Add photos to `wedding/` (and ~640px thumbs to `wedding/thumb/`), list them in `wedding-photos.json` in the same shape as `gallery.json`, and push. Open pages pick up new photos within a minute. The album button opens the shared Google Drive folder set in `PAGE.album`, which is also where the printed thank-you card QR points
+- The home page is a save-the-date with a countdown; after the ceremony starts it reads "Today Is The Day", then "Just Married" from the 15th
 - Set `preview: false` in `SITE` to remove the sample-details banner
 - Deploys to Vercel as a static site on every push to `main`
 

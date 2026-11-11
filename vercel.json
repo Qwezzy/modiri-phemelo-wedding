@@ -1,3 +1,5 @@
 {
-  "functions": { "api/rsvp.js": { "maxDuration": 30 } }
+  "functions": { "api/rsvp.js": { "maxDuration": 30 } },
+  "rewrites": [{ "source": "/wedding-photos", "destination": "/wedding-photos.html" }],
+  "headers": [{ "source": "/wedding-photos.json", "headers": [{ "key": "Cache-Control", "value": "no-cache" }] }]
 }

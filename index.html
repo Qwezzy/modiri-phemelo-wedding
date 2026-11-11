@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Modiri &amp; Phemelo</title>
-<meta name="description" content="Modiri weds Phemelo. 14 November 2026, Gauteng. RSVP, registry, places to stay, directions and gallery.">
+<meta name="description" content="Save the date. Modiri weds Phemelo, 14 November 2026, Suitability Gardens, Gauteng. The day, registry, places to stay, directions and gallery.">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#0A0A0A">
 <link rel="icon" type="image/png" href="favicon.png">
@@ -13,11 +13,11 @@
 <meta property="og:site_name" content="Modiri &amp; Phemelo">
 <meta property="og:url" content="https://modiriwedsphemelo.co.za/">
 <meta property="og:title" content="Modiri &amp; Phemelo">
-<meta property="og:description" content="You are cordially invited to the wedding of Modiri and Phemelo. 14 November 2026, Suitability Gardens, Gauteng.">
+<meta property="og:description" content="Save the date. Modiri weds Phemelo, Saturday 14 November 2026, Suitability Gardens, Gauteng.">
 <meta property="og:image" content="https://modiriwedsphemelo.co.za/invitation.jpg">
 <meta property="og:image:width" content="1254">
 <meta property="og:image:height" content="1254">
-<meta property="og:image:alt" content="Invitation to the wedding of Modiri and Phemelo, 14 November 2026">
+<meta property="og:image:alt" content="Save the date: Modiri weds Phemelo, 14 November 2026">
 <meta name="twitter:card" content="summary">
 <style>html{color-scheme:dark;background:#020202}img{max-width:100%}</style>
 </head>
@@ -121,12 +121,27 @@ a { color: inherit; }
 .hero img { display: block; width: 100%; height: auto; max-width: 100%; aspect-ratio: 1 / 1; }
 .hero-foot {
   display: grid; justify-items: center; gap: 14px; text-align: center;
-  padding: 28px 24px 40px; border-top: 1px solid var(--rule);
+  padding: 28px clamp(14px, 4vw, 24px) 40px; border-top: 1px solid var(--rule);
 }
-.countdown { display: flex; gap: clamp(18px, 6vw, 44px); justify-content: center; font-variant-numeric: lining-nums tabular-nums; }
-.countdown div { display: grid; justify-items: center; }
-.countdown b { font-family: var(--display); font-weight: 500; font-size: clamp(34px, 9vw, 46px); line-height: 1; }
-.countdown span { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; color: var(--ink-soft); margin-top: 6px; }
+.hero-date { margin: 0; font-family: var(--display); font-weight: 500; font-size: clamp(19px, 5vw, 30px); letter-spacing: .1em; line-height: 1.2; padding-left: .1em; text-wrap: balance; }
+/* Countdown: the centrepiece of the save-the-date. Four framed tiles, brushed-silver numerals. */
+.countdown {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(6px, 2vw, 14px);
+  width: 100%; max-width: 600px; margin: 8px 0 4px; font-variant-numeric: lining-nums tabular-nums;
+}
+.countdown div {
+  position: relative; display: grid; justify-items: center; align-content: center;
+  padding: clamp(16px, 4.6vw, 30px) 4px clamp(13px, 3.6vw, 22px);
+  background: linear-gradient(180deg, rgba(255, 255, 255, .075), rgba(255, 255, 255, .02));
+  border: 1px solid var(--edge);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 18px 34px -22px #000;
+}
+.countdown div::after { content: ""; position: absolute; inset: 4px; border: 1px solid var(--rule); pointer-events: none; }
+.countdown b { font-family: var(--display); font-weight: 500; font-size: clamp(42px, 13.5vw, 88px); line-height: .92; }
+.countdown span { font-family: var(--display); font-weight: 500; font-size: clamp(10px, 2.6vw, 14px); letter-spacing: .12em; padding-left: .12em; color: var(--ink-soft); margin-top: clamp(8px, 2vw, 12px); }
+.cd-note { margin: 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; padding-left: .22em; color: var(--ink-soft); text-wrap: balance; }
+.cd-done { margin: 6px 0 2px; font-family: var(--display); font-weight: 500; font-size: clamp(40px, 12vw, 76px); letter-spacing: .1em; padding-left: .1em; line-height: 1.05; text-wrap: balance; }
+.hero-foot .btn-row { margin-top: 10px; }
 
 /* Type */
 .kicker { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .26em; color: var(--ink-soft); margin: 0; text-align: center; padding-left: .26em; }
@@ -276,7 +291,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
 
 /* Brushed-silver type, echoing the embossed seal. Falls back to plain silver-white. */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  h2, .countdown b, .event .time, .venue .name, .card h3 {
+  h2, .countdown b, .cd-done, .hero-date, .event .time, .venue .name, .card h3 {
     background: var(--silver); -webkit-background-clip: text; background-clip: text;
     color: transparent; -webkit-text-fill-color: transparent;
   }
@@ -295,11 +310,12 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   <div class="nav-inner">
     <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="logo-nav.svg" width="2257" height="706" alt=""></a>
     <div class="links">
-      <a href="#rsvp">RSVP</a>
+      <a href="#day">THE DAY</a>
       <a href="#registry">REGISTRY</a>
       <a href="#stay">STAY</a>
       <a href="#directions">DIRECTIONS</a>
       <a href="#gallery">GALLERY</a>
+      <a href="wedding-photos.html">PHOTOS</a>
     </div>
   </div>
 </nav>
@@ -308,25 +324,30 @@ footer .credit b { font-weight: 600; color: var(--ink); }
   <p class="preview-note" id="preview-note" hidden>SAMPLE DETAILS · FOR PREVIEW ONLY</p>
 
   <!-- Hero: the couple's artwork as supplied -->
-  <section class="sheet hero" aria-label="Invitation">
+  <section class="sheet hero" aria-label="Save the date">
     <img src="invitation.jpg" width="1254" height="1254"
-         alt="You are cordially invited to Modiri weds Phemelo, 14 November 2026, Suitability Gardens, Gauteng Province. Strictly no kids allowed.">
+         alt="Save the date: Modiri weds Phemelo, 14 November 2026, Suitability Gardens, Gauteng Province. Strictly no kids allowed.">
     <div class="hero-foot">
-      <p class="kicker">SATURDAY · 14 NOVEMBER 2026</p>
-      <div class="countdown" id="countdown" aria-live="off">
+      <p class="kicker" id="hero-kicker">SAVE THE DATE</p>
+      <p class="hero-date">Saturday, 14 November 2026</p>
+      <div class="countdown" id="countdown" role="timer" aria-label="Countdown to the ceremony">
         <div><b id="cd-d">--</b><span>DAYS</span></div>
         <div><b id="cd-h">--</b><span>HOURS</span></div>
         <div><b id="cd-m">--</b><span>MINUTES</span></div>
+        <div><b id="cd-s">--</b><span>SECONDS</span></div>
       </div>
+      <p class="cd-done" id="cd-done" hidden></p>
+      <p class="cd-note" id="cd-note"></p>
       <div class="btn-row">
-        <a class="btn" id="hero-rsvp" href="#rsvp">KINDLY REPLY</a>
-        <a class="btn ghost" id="hero-cal" href="#" target="_blank" rel="noopener">ADD TO CALENDAR</a>
+        <a class="btn" id="hero-cal" href="#" target="_blank" rel="noopener">ADD TO CALENDAR</a>
+        <a class="btn ghost" id="hero-dir" href="#directions">DIRECTIONS</a>
+        <a class="btn ghost" id="hero-photos" href="wedding-photos.html" hidden>WEDDING PHOTOS</a>
       </div>
     </div>
   </section>
 
   <!-- The day -->
-  <section class="sheet pr" aria-labelledby="day-h">
+  <section class="sheet pr" id="day" aria-labelledby="day-h">
     <p class="kicker">THE CELEBRATION</p>
     <h2 id="day-h">The Day</h2>
     <div class="short-rule"></div>
@@ -478,8 +499,9 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <div class="empty" id="gallery-empty">
       <div class="frames" aria-hidden="true"><i></i><i></i><i></i></div>
       <p>Photographs of the couple will be added here.</p>
-      <p class="note">After the day, this is where the wedding photos will live.</p>
+      <p class="note">Wedding-day photos will be on their own page.</p>
     </div>
+    <div class="btn-row" style="margin-top:26px"><a class="btn ghost" href="wedding-photos.html">WEDDING DAY PHOTOS</a></div>
   </section>
 
   <footer>
@@ -583,20 +605,36 @@ if (SITE.rsvpContact && SITE.rsvpContact.name) {
 }
 const derived = {
   adultsLine: SITE.adultsOnly ? "Adults only. " + SITE.adultsOnly : "",
-  rsvpByLine: SITE.rsvpClosed ? "RSVPS ARE CLOSED" : SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
+  rsvpByLine: SITE.rsvpClosed ? "REPLIES ARE CLOSED" : SITE.rsvpBy ? "PLEASE REPLY BY " + SITE.rsvpBy.toUpperCase() : "SATURDAY · 14 NOVEMBER 2026",
   rsvpEmail: SITE.rsvpEmail
 };
 document.querySelectorAll("[data-k]").forEach(n => { n.textContent = derived[n.dataset.k] ?? SITE[n.dataset.k] ?? ""; });
 
 /* Countdown to the ceremony (SAST = UTC+2) */
 const target = Date.UTC(SITE.date.y, SITE.date.m - 1, SITE.date.d, SITE.date.hour - 2, SITE.date.minute);
+const DAY_END = Date.UTC(SITE.date.y, SITE.date.m - 1, SITE.date.d, 22);   // midnight SAST after the wedding day
+const cdNote = [SITE.ceremony.time && "CEREMONY AT " + SITE.ceremony.time, SITE.venueName && SITE.venueName.toUpperCase()].filter(Boolean).join(" · ");
+let cdTimer;
 function tick() {
-  const ms = Math.max(0, target - Date.now());
+  const now = Date.now(), ms = target - now;
+  if (ms <= 0) {   // the day itself, then after it
+    const after = now >= DAY_END;
+    $("countdown").hidden = true;
+    if (after) $("hero-kicker").textContent = "MODIRI WEDS PHEMELO";
+    $("cd-done").textContent = after ? "Just Married" : "Today Is The Day";
+    $("cd-done").hidden = false;
+    $("cd-note").textContent = after ? "THANK YOU FOR CELEBRATING WITH US" : cdNote;
+    $("hero-cal").hidden = true; $("hero-dir").hidden = after; $("hero-photos").hidden = false;
+    if (after) clearInterval(cdTimer);
+    return;
+  }
+  $("cd-note").textContent = cdNote;
   $("cd-d").textContent = Math.floor(ms / 864e5);
   $("cd-h").textContent = String(Math.floor(ms / 36e5) % 24).padStart(2, "0");
   $("cd-m").textContent = String(Math.floor(ms / 6e4) % 60).padStart(2, "0");
+  $("cd-s").textContent = String(Math.floor(ms / 1e3) % 60).padStart(2, "0");
 }
-tick(); setInterval(tick, 30000);
+tick(); cdTimer = setInterval(tick, 1000);
 
 /* Registry cards */
 const registry = SITE.registry;
@@ -657,7 +695,7 @@ $("waze").href = "https://waze.com/ul?navigate=yes&q=" + encodeURIComponent(plac
   const dates = timed
     ? fmt(new Date(target)) + "/" + fmt(new Date(target + 12 * 36e5))
     : day(SITE.date.y, SITE.date.m, SITE.date.d) + "/" + day(SITE.date.y, SITE.date.m, SITE.date.d + 1);
-  const details = ["You are cordially invited to the wedding of Modiri and Phemelo.", times.join(" · ")].filter(Boolean).join("\n");
+  const details = ["Save the date: the wedding of Modiri and Phemelo.", times.join(" · ")].filter(Boolean).join("\n");
   const cal = "https://calendar.google.com/calendar/render?" + new URLSearchParams({
     action: "TEMPLATE", text: "Modiri & Phemelo's Wedding", dates, details, location: place || "Gauteng Province"
   });
@@ -669,13 +707,14 @@ SITE.routes.forEach(r => {
 });
 
 /* RSVP: open once a reply address is set; closed for good once rsvpClosed is true */
-if (!SITE.rsvpEmail) { $("rsvp-closed").hidden = false; $("rsvp-form").hidden = true; $("hero-rsvp").hidden = true; }
+if (!SITE.rsvpEmail) { $("rsvp-closed").hidden = false; $("rsvp-form").hidden = true; }
 if (SITE.rsvpClosed) {
-  $("rsvp-closed-msg").textContent = "RSVPs are now closed.";
-  $("rsvp-closed-note").textContent = "We are no longer accepting replies. Only guests who RSVP\u2019d by "
-    + SITE.rsvpBy + " will be admitted on the day. Thank you for understanding.";
+  $("rsvp-h").textContent = "The Guest List";
+  $("rsvp-closed-msg").textContent = "Our guest list is now final.";
+  $("rsvp-closed-note").textContent = "Replies closed on " + SITE.rsvpBy + ". If your place was confirmed by email, save the date: "
+    + "we look forward to celebrating with you on Saturday, 14 November. Only confirmed guests will be admitted on the day.";
   $("rsvp-closed").hidden = false;
-  ["rsvp-form", "hero-rsvp", "rsvp-contact", "rsvp-personal"].forEach(id => { $(id).hidden = true; });
+  ["rsvp-form", "rsvp-contact", "rsvp-personal"].forEach(id => { $(id).hidden = true; });
   try { localStorage.removeItem("mp-rsvp-draft"); } catch (_) {}
 }
 for (let i = 1; i <= SITE.maxGuests; i++) {
