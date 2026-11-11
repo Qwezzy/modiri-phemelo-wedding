@@ -101,6 +101,8 @@ h2 { font-family: var(--display); font-weight: 500; text-align: center; font-siz
 .empty .frames i:nth-child(2) { height: 84px; margin-top: -7px; }
 .empty p { margin: 0; }
 .album { display: grid; gap: 12px; justify-items: center; margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--rule); }
+.album .qr { width: 168px; height: 168px; background: #fff; padding: 8px; display: block; }
+.album .qr-label { margin: 4px 0 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; padding-left: .22em; color: var(--ink-soft); }
 
 .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .95); display: grid; place-items: center;
   padding: calc(56px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(72px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
@@ -155,6 +157,8 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <div class="album" id="album" hidden>
       <a class="btn" id="album-link" href="#" target="_blank" rel="noopener">OPEN THE FULL ALBUM</a>
       <p class="note">Opens the shared Google Drive folder, where you can download the photos.</p>
+      <img class="qr" src="album-qr.svg" width="168" height="168" alt="QR code linking to the shared photo album">
+      <p class="qr-label">OR SCAN TO VIEW PHOTOS</p>
     </div>
   </section>
 
