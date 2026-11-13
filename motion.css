@@ -89,7 +89,7 @@
   background: linear-gradient(100deg, transparent, var(--mo-sweep), transparent);
   transform: translateX(-130%) skewX(-18deg); animation: mo-sweep 2.4s cubic-bezier(.4,.1,.2,1) 1.2s 1 both;
 }
-.mo .hero-foot > .kicker { animation: mo-rise 1s cubic-bezier(.16,.8,.24,1) 1s backwards; }
+.mo .hero-foot > .hero-kicker { animation: mo-rise 1s cubic-bezier(.16,.8,.24,1) 1s backwards; }
 .mo .hero-foot > .countdown { animation: mo-rise 1s cubic-bezier(.16,.8,.24,1) 1.15s backwards; }
 .mo .hero-foot > .btn-row { animation: mo-rise 1s cubic-bezier(.16,.8,.24,1) 1.3s backwards; }
 .countdown b.bump { animation: mo-bump .6s cubic-bezier(.16,.8,.24,1); }

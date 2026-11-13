@@ -660,6 +660,7 @@ const target = Date.UTC(SITE.date.y, SITE.date.m - 1, SITE.date.d, SITE.date.hou
 const DAY_END = Date.UTC(SITE.date.y, SITE.date.m - 1, SITE.date.d, 22);   // midnight SAST after the wedding day
 const cdNote = [SITE.ceremony.time && "CEREMONY AT " + SITE.ceremony.time, SITE.venueName && SITE.venueName.toUpperCase()].filter(Boolean).join(" · ");
 let cdTimer;
+const setText = (id, v) => { const e = $(id); if (e.textContent !== v) e.textContent = v; };   // only touch the DOM when the text really changes, so nothing re-animates every second
 function tick() {
   const now = Date.now(), ms = target - now;
   if (ms <= 0) {   // the day itself, then after it
@@ -673,13 +674,13 @@ function tick() {
     if (after) clearInterval(cdTimer);
     return;
   }
-  $("cd-note").textContent = cdNote;
+  setText("cd-note", cdNote);
   const sastDay = (t) => Math.floor((t + 2 * 36e5) / 864e5);
-  $("hero-kicker").textContent = sastDay(target) - sastDay(now) === 1 ? "THE WEDDING IS TOMORROW" : "SAVE THE DATE";
-  $("cd-d").textContent = Math.floor(ms / 864e5);
-  $("cd-h").textContent = String(Math.floor(ms / 36e5) % 24).padStart(2, "0");
-  $("cd-m").textContent = String(Math.floor(ms / 6e4) % 60).padStart(2, "0");
-  $("cd-s").textContent = String(Math.floor(ms / 1e3) % 60).padStart(2, "0");
+  setText("hero-kicker", sastDay(target) - sastDay(now) === 1 ? "THE WEDDING IS TOMORROW" : "SAVE THE DATE");
+  setText("cd-d", String(Math.floor(ms / 864e5)));
+  setText("cd-h", String(Math.floor(ms / 36e5) % 24).padStart(2, "0"));
+  setText("cd-m", String(Math.floor(ms / 6e4) % 60).padStart(2, "0"));
+  setText("cd-s", String(Math.floor(ms / 1e3) % 60).padStart(2, "0"));
 }
 tick(); cdTimer = setInterval(tick, 1000);
 

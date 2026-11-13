@@ -200,11 +200,14 @@
       };
       requestAnimationFrame(step);
     } else settled = true;
+    const last = new Map(cd.map((n) => [n, n.textContent]));
     const mo = new MutationObserver((list) => {
-      if (!settled) return;
+      if (!settled) { cd.forEach((n) => last.set(n, n.textContent)); return; }
       list.forEach((m) => {
         const n = m.target.nodeType === 3 ? m.target.parentNode : m.target;
         if (!n || !n.classList) return;
+        if (last.get(n) === n.textContent) return;   // same digits rewritten: no animation
+        last.set(n, n.textContent);
         n.classList.remove("bump"); void n.offsetWidth; n.classList.add("bump");
       });
     });
