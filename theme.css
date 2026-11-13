@@ -51,12 +51,10 @@ body { background: var(--ground); }
 .card { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7); }
 .hero { background: var(--paper); }
 
-/* The black artwork becomes a framed print on the ivory sheet */
-.hero { --hm: clamp(14px, 4vw, 28px); }
-.hero > img, .hero > .hero-art {
-  width: calc(100% - 2 * var(--hm)); margin: 0 var(--hm) var(--hm);
-  outline: 1px solid var(--seal-deep); outline-offset: 5px; background: #0b0b0b;
-}
+/* The poster sits on the same ivory as the sheet, so it reads as part of the page */
+.hero { --hm: clamp(10px, 3vw, 22px); }
+.hero > img, .hero > .hero-art { width: calc(100% - 2 * var(--hm)); margin: 0 var(--hm) var(--hm); background: transparent; }
+.hero img { aspect-ratio: 1287 / 1819; }
 .hero-foot { border-bottom: 0; padding-bottom: clamp(22px, 5vw, 36px); }
 
 /* Headings in poster brown; gold kept for the numerals and fills */
