@@ -288,3 +288,44 @@ function testRsvp() {
   const me = Session.getEffectiveUser().getEmail();
   Logger.log(JSON.stringify(save(clean({ name: "TEST Guest", email: me, phone: "000", attending: "yes", guests: 2, diet: "Vegetarian", note: "Test row, please delete." }))));
 }
+
+/* ---------- one-off: tell confirmed guests about the site update (programme, menu, guidelines, photos) ----------
+   1. Run previewSiteUpdate() first. It sends one copy to the script owner so you can check how it looks.
+   2. Run sendSiteUpdate() to email every approved, attending guest. Each address gets it once, even if you run it twice.
+   Gmail's daily limit applies; the run stops cleanly if the quota runs out and carries on the next time you run it. */
+const SITE_URL = "https://modiriwedsphemelo.co.za";
+const UPDATE_SUBJECT = "See you tomorrow · programme and menu are on the site · " + EVENT.couple;
+const UPDATE_INTRO = "The wedding is tomorrow. We have updated our website with the programme for the day, the menu, a few guest guidelines and the countdown. Please take a look before you travel.";
+const UPDATE_ROWS = () => [
+  ["Programme & menu", SITE_URL + "/programme.html"],
+  ["Directions & guidelines", SITE_URL],
+  ["Wedding photos", SITE_URL + "/wedding-photos.html (opens during the day, or scan the QR code on the printed card)"]
+];
+
+function previewSiteUpdate() {
+  const me = Session.getEffectiveUser().getEmail();
+  sendGuestMail(me, "[PREVIEW] " + UPDATE_SUBJECT, "Guest", UPDATE_INTRO, [], UPDATE_ROWS().concat(DAY_DETAILS()), "Questions? Just reply to this email." + CONTACT_LINE);
+  Logger.log("Preview sent to " + me);
+}
+
+function sendSiteUpdate() {
+  const props = PropertiesService.getScriptProperties();
+  const sh = SpreadsheetApp.openById(props.getProperty("SHEET_ID")).getSheetByName(TAB);
+  const n = sh.getLastRow() - 1;
+  if (n < 1) return Logger.log("No replies yet.");
+  const done = JSON.parse(props.getProperty("SITE_UPDATE_SENT") || "[]");
+  const rows = sh.getRange(2, 1, n, HEAD.length).getValues()
+    .filter(r => r[C.ATT - 1] === "Yes" && (!APPROVAL || r[C.STATUS - 1] === "Approved"))
+    .filter(r => done.indexOf(String(r[C.EMAIL - 1]).toLowerCase()) < 0);
+  let sent = 0, failed = [];
+  for (const r of rows) {
+    if (MailApp.getRemainingDailyQuota() < 1) { Logger.log("Quota reached. Run again later."); break; }
+    const email = String(r[C.EMAIL - 1]).toLowerCase();
+    try {
+      sendGuestMail(email, UPDATE_SUBJECT, String(r[C.NAME - 1]).split(" ")[0], UPDATE_INTRO, [], UPDATE_ROWS().concat(DAY_DETAILS()), "Questions? Just reply to this email." + CONTACT_LINE);
+      done.push(email); sent++;
+      props.setProperty("SITE_UPDATE_SENT", JSON.stringify(done));
+    } catch (err) { failed.push(email); }
+  }
+  Logger.log("Sent " + sent + ", failed " + failed.length + (failed.length ? " (" + failed.join(", ") + ")" : "") + ", still to send " + (rows.length - sent) + ".");
+}
