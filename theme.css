@@ -1,0 +1,91 @@
+/* =====================================================================
+   Theme: ivory and gold, matched to the wedding photo poster.
+   Loaded after every page's own styles, so it only has to redefine the
+   palette and the few hard-coded dark values. Delete this file (and the
+   <link> to it) to go back to the black and silver look.
+   ===================================================================== */
+:root {
+  --ground: #E9DFC9;                 /* the table the stationery sits on */
+  --paper: #F9F5EC;                  /* poster ivory */
+  --paper-2: #F3ECDC;
+  --ink: #4E3825;                    /* poster brown */
+  --ink-soft: #6E5B4A;
+  --seal: #C1974B;                   /* poster gold */
+  --seal-deep: #AE8849;
+  --rule: rgba(174, 136, 73, .5);
+  --edge: rgba(174, 136, 73, .85);
+  --field: rgba(78, 56, 37, .05);
+  --silver: linear-gradient(180deg, #D7B162 0%, #B38833 52%, #CDA655 100%);   /* gold, kept under the old variable name */
+  --gold-ink: #2F2013;               /* text on gold fills */
+  color-scheme: light;
+
+  /* motion layer */
+  --mo-glint: rgba(214, 176, 98, .95);
+  --mo-text-base: linear-gradient(var(--ink), var(--ink));
+  --mo-light: 193, 151, 75;  --mo-light-a: .1;
+  --mo-spot: rgba(193, 151, 75, .14);
+  --mo-hov: #AE8849;
+  --mo-card-shadow: rgba(78, 56, 37, .5);
+  --mo-card-inset: inset 0 1px 0 rgba(255, 255, 255, .7);
+  --mo-progress: linear-gradient(90deg, #AE8849, #E2C27E 55%, #C1974B);
+  --mo-amb1: rgba(193, 151, 75, .14);  --mo-amb2: rgba(193, 151, 75, .07);
+  --mo-shine: rgba(255, 255, 255, .55);  --mo-shine-ghost: rgba(193, 151, 75, .22);
+  --mo-btn-hover-shadow: inset 0 1px 0 rgba(255, 255, 255, .6), 0 14px 26px -12px rgba(78, 56, 37, .55);
+  --mo-focus: rgba(174, 136, 73, .28);
+  --mo-frame: rgba(174, 136, 73, .8);
+  --mo-glow: rgba(193, 151, 75, .4);
+  --mo-nav-shadow: rgba(78, 56, 37, .5);
+  --mo-rip: rgba(47, 32, 19, .16);  --mo-rip-ghost: rgba(174, 136, 73, .25);
+}
+html { background: var(--ground); color-scheme: light; }
+body { background: var(--ground); }
+::selection { background: rgba(193, 151, 75, .35); color: var(--ink); }
+
+.nav { background: rgba(249, 245, 236, .94); }
+.logo:focus-visible, .btn:focus-visible, .textlink:focus-visible, .gallery button:focus-visible, .choice input:focus-visible + label { outline-color: var(--seal-deep); }
+
+/* Stationery */
+.sheet {
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .85), 0 0 0 1px rgba(174, 136, 73, .22), 0 24px 46px -28px rgba(78, 56, 37, .55);
+}
+.card { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7); }
+.hero { background: var(--paper); }
+
+/* The black artwork becomes a framed print on the ivory sheet */
+.hero { --hm: clamp(14px, 4vw, 28px); }
+.hero > img, .hero > .hero-art {
+  width: calc(100% - 2 * var(--hm)); margin: 0 var(--hm) var(--hm);
+  outline: 1px solid var(--seal-deep); outline-offset: 5px; background: #0b0b0b;
+}
+.hero-foot { border-bottom: 0; padding-bottom: clamp(22px, 5vw, 36px); }
+
+/* Headings in poster brown; gold kept for the numerals and fills */
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  h2, .hero-date, .event .time, .venue .name, .card h3 {
+    background: linear-gradient(var(--ink), var(--ink)); -webkit-background-clip: text; background-clip: text;
+  }
+}
+.countdown div {
+  background: linear-gradient(180deg, rgba(255, 255, 255, .75), rgba(255, 255, 255, .3));
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .9), 0 18px 34px -24px rgba(78, 56, 37, .55);
+}
+
+/* Buttons: gold fill with dark brown lettering, gold outline for the secondary */
+.btn { color: var(--gold-ink); border-color: #A87E2E; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55), 0 8px 18px -10px rgba(78, 56, 37, .6); }
+.btn:hover { border-color: #8F6A22; }
+.btn.ghost { color: var(--ink); border: 1px solid var(--edge); border-image: none; background: transparent; }
+.btn.ghost:hover { background: rgba(193, 151, 75, .14); }
+.choice input:checked + label { color: var(--gold-ink); border-color: #A87E2E; box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55); }
+
+/* Forms */
+input::placeholder, textarea::placeholder { color: rgba(78, 56, 37, .55); }
+input:focus-visible, select:focus-visible, textarea:focus-visible { border-color: var(--seal-deep); background: #fff; }
+.err { color: #A63D2A; }
+
+/* Gallery and lightbox stay dark so photos read well */
+.empty .frames i { background: var(--paper-2); }
+
+/* Photos page */
+.thanks { color: #F1ECE4; box-shadow: 0 0 0 1px rgba(174, 136, 73, .35), 0 24px 46px -28px rgba(78, 56, 37, .55); }
+.thanks .names { color: #D4B783; }
+.album .qr { border: 1px solid var(--seal-deep); outline: 1px solid var(--rule); outline-offset: 5px; }
