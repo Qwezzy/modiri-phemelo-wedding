@@ -289,6 +289,23 @@ footer .credit a:hover, footer .credit a:focus-visible { color: var(--ink); }
 footer .credit-contact { display: block; margin-top: 6px; letter-spacing: .12em; }
 footer .credit b { font-weight: 600; color: var(--ink); }
 
+/* Wedding etiquette & guest guidelines */
+.guide { max-width: 640px; margin: 0 auto; }
+.guide .greet { margin: 0 auto 26px; text-align: center; text-wrap: balance; }
+.guide ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: g; }
+.guide li { counter-increment: g; display: grid; grid-template-columns: 44px minmax(0, 1fr); column-gap: 14px; padding: 20px 0; border-top: 1px solid var(--rule); }
+.guide li:last-child { border-bottom: 1px solid var(--rule); }
+.guide li::before { content: counter(g); grid-row: 1 / span 2; font-family: var(--display); font-weight: 500; font-size: 30px; line-height: 1; color: var(--ink-soft); font-variant-numeric: lining-nums; text-align: center; padding-top: 2px; }
+.guide h3 { margin: 0 0 6px; font-family: var(--display); font-weight: 500; font-size: 17px; letter-spacing: .12em; line-height: 1.3; text-wrap: balance; }
+.guide li p { margin: 0; font-size: 18px; line-height: 1.5; color: var(--ink); }
+.guide li p a { text-underline-offset: 3px; }
+.guide .final { margin-top: 34px; text-align: center; display: grid; gap: 14px; justify-items: center; }
+.guide .final .label { font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .26em; padding-left: .26em; color: var(--ink-soft); }
+.guide .final p { margin: 0; text-wrap: balance; }
+.guide .sign { margin-top: 10px; font-style: italic; color: var(--ink-soft); }
+.guide .sign b { display: block; font-family: var(--display); font-style: normal; font-weight: 500; font-size: 20px; letter-spacing: .14em; color: var(--ink); margin-top: 4px; }
+@media (max-width: 520px) { .guide li { grid-template-columns: 30px minmax(0, 1fr); column-gap: 10px; } .guide li::before { font-size: 24px; } .guide li p { font-size: 17px; } }
+
 /* Brushed-silver type, echoing the embossed seal. Falls back to plain silver-white. */
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
   h2, .countdown b, .cd-done, .hero-date, .event .time, .venue .name, .card h3 {
@@ -311,6 +328,7 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <a class="logo" href="#top" aria-label="Modiri and Phemelo, back to top"><img src="logo-nav.svg" width="2257" height="706" alt=""></a>
     <div class="links">
       <a href="#day">THE DAY</a>
+      <a href="#etiquette">GUIDELINES</a>
       <a href="#registry">REGISTRY</a>
       <a href="#stay">STAY</a>
       <a href="#directions">DIRECTIONS</a>
@@ -372,6 +390,32 @@ footer .credit b { font-weight: 600; color: var(--ink); }
     <div class="dress" id="adults-line" hidden>
       <span class="label">ADULTS ONLY</span>
       <p data-k="adultsOnly"></p>
+    </div>
+  </section>
+
+  <!-- Etiquette & guest guidelines -->
+  <section class="sheet" id="etiquette" aria-labelledby="etq-h">
+    <p class="kicker">A KIND REQUEST FROM THE BRIDE &amp; GROOM</p>
+    <h2 id="etq-h">Wedding Etiquette &amp; Guest Guidelines</h2>
+    <div class="short-rule"></div>
+    <div class="guide">
+      <p class="lead greet">Dear Family and Friends, we are delighted to have you celebrate this beautiful and memorable occasion with us. To ensure that our special day runs smoothly, we kindly request that all guests observe the following guidelines:</p>
+      <ol>
+        <li><h3>Photography of the Bride &amp; Groom</h3><p>Guests are kindly requested not to take photographs or record videos of the bride and groom throughout the wedding celebrations. We have appointed professional photographers and videographers to capture these precious moments, and a link will be shared on this website with photos. <a href="wedding-photos.html">See the wedding photos page</a>.</p></li>
+        <li><h3>Personal Photography</h3><p>You are more than welcome to take photographs of yourselves, family and friends around the venue. However, we kindly request that the bride and groom are not included in any personal photographs or recordings.</p></li>
+        <li><h3>Social Media Privacy</h3><p>Please refrain from posting or sharing any photographs or videos featuring the bride and groom on social media platforms, including WhatsApp statuses, Facebook, Instagram and TikTok, unless permission has been granted.</p></li>
+        <li><h3>Respect for the Ceremony</h3><p>We kindly request that all mobile phones be switched to silent mode during the ceremony. Guests are encouraged to remain seated and avoid unnecessary movement, particularly during the exchange of vows.</p></li>
+        <li><h3>Respect Our Professional Photographers</h3><p>Please allow our appointed photographers and videographers unrestricted access to capture the ceremony and celebrations without interruptions or obstruction.</p></li>
+        <li><h3>An Adults-Only Celebration</h3><p>As communicated in our wedding invitation, this is strictly an adults-only celebration. We kindly request that guests respect this arrangement.</p></li>
+        <li><h3>Programme and Seating Arrangements</h3><p>Guests are kindly requested to follow the wedding programme, observe the seating arrangements and cooperate with the programme directors and ushers throughout the celebrations.</p></li>
+        <li><h3>Enjoy the Moment</h3><p>Above all, we encourage everyone to relax, celebrate, dance and enjoy this beautiful occasion with us. Your presence means more to us than any photograph ever could.</p></li>
+      </ol>
+      <div class="final">
+        <span class="label">A FINAL WORD FROM THE SOON-TO-BE NEWLYWEDS</span>
+        <p>We have chosen to preserve the memories of our wedding through the lenses of our appointed professionals. We kindly ask that you respect our wishes and allow us to enjoy our special day without personal cameras being directed at us.</p>
+        <p>Thank you for your love, understanding and cooperation.</p>
+        <p class="sign">With Love &amp; Appreciation,<b>Modiri &amp; Phemelo</b>14 November 2026</p>
+      </div>
     </div>
   </section>
 
