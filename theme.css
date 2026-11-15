@@ -54,7 +54,7 @@ body { background: var(--ground); }
 /* The poster sits on the same ivory as the sheet, so it reads as part of the page */
 .hero { --hm: clamp(10px, 3vw, 22px); }
 .hero > img, .hero > .hero-art { width: calc(100% - 2 * var(--hm)); margin: 0 var(--hm) var(--hm); background: transparent; }
-.hero img { aspect-ratio: 1287 / 1819; }
+.hero img { aspect-ratio: 1287 / 933; }
 .hero-foot { border-bottom: 0; padding-bottom: clamp(22px, 5vw, 36px); }
 
 /* Headings in poster brown; gold kept for the numerals and fills */
@@ -86,4 +86,3 @@ input:focus-visible, select:focus-visible, textarea:focus-visible { border-color
 /* Photos page */
 .thanks { color: #F1ECE4; box-shadow: 0 0 0 1px rgba(174, 136, 73, .35), 0 24px 46px -28px rgba(78, 56, 37, .55); }
 .thanks .names { color: #D4B783; }
-.album .qr { border: 1px solid var(--seal-deep); outline: 1px solid var(--rule); outline-offset: 5px; }

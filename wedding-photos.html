@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cormorant+SC:wght@400;500;600&display=swap">
 <style>
-/* The page the thank-you card QR leads to. Same black-and-silver stationery as the main site.
+/* The wedding photo page. Same black-and-silver stationery as the main site.
    Photos are listed in wedding-photos.json; the page re-checks that file every minute, so guests
    who keep it open see new photos arrive during the day. */
 [hidden] { display: none !important; }
@@ -102,9 +102,6 @@ h2 { font-family: var(--display); font-weight: 500; text-align: center; font-siz
 .empty .frames i { width: 56px; height: 70px; border: 1px solid var(--rule); background: var(--paper-2); }
 .empty .frames i:nth-child(2) { height: 84px; margin-top: -7px; }
 .empty p { margin: 0; }
-.album { display: grid; gap: 12px; justify-items: center; margin-top: 34px; padding-top: 28px; border-top: 1px solid var(--rule); }
-.album .qr { width: 168px; height: 168px; background: #fff; padding: 8px; display: block; }
-.album .qr-label { margin: 4px 0 0; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; padding-left: .22em; color: var(--ink-soft); }
 
 .lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .95); display: grid; place-items: center;
   padding: calc(56px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(72px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
@@ -157,12 +154,6 @@ footer .credit b { font-weight: 600; color: var(--ink); }
       <p class="note" id="empty-note">Keep this page open or come back later. It refreshes on its own.</p>
     </div>
 
-    <div class="album" id="album" hidden>
-      <a class="btn" id="album-link" href="#" target="_blank" rel="noopener">OPEN THE FULL ALBUM</a>
-      <p class="note">Opens the shared Google Drive folder, where you can download the photos.</p>
-      <img class="qr" src="album-qr.svg" width="168" height="168" alt="QR code linking to the shared photo album">
-      <p class="qr-label">OR SCAN TO VIEW PHOTOS</p>
-    </div>
   </section>
 
   <footer>
@@ -183,15 +174,12 @@ footer .credit b { font-weight: 600; color: var(--ink); }
 <script>
 /* ---- Settings ---- */
 const PAGE = {
-  // Shared Google Drive folder (the one the printed QR code opens). Set to "" to hide the album button.
-  album: "https://drive.google.com/drive/folders/15ca7YK6gLXPUnPlFzFV2GhGNynsr7Img?usp=sharing",
   list: "wedding-photos.json",   // [{ "src": "wedding/x.jpg", "thumb": "wedding/thumb/x.jpg", "alt": "...", "pos": "50% 30%" }]
   refreshMs: 60000,
   weddingDay: Date.UTC(2026, 10, 13, 22)   // 00:00 SAST on 14 November 2026
 };
 const $ = (id) => document.getElementById(id);
 
-if (PAGE.album) { $("album-link").href = PAGE.album; $("album").hidden = false; }
 if (Date.now() >= PAGE.weddingDay) {
   $("empty-msg").textContent = "The first photos are on their way.";
   $("ph-lead").textContent = "Photos from the day are added here as they come in.";

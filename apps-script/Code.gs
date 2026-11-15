@@ -299,7 +299,7 @@ const UPDATE_INTRO = "The wedding is tomorrow. We have updated our website with 
 const UPDATE_ROWS = () => [
   ["Programme & menu", SITE_URL + "/programme.html"],
   ["Directions & guidelines", SITE_URL],
-  ["Wedding photos", SITE_URL + "/wedding-photos.html (opens during the day, or scan the QR code on the printed card)"]
+  ["Wedding photos", SITE_URL + "/wedding-photos.html"]
 ];
 
 function previewSiteUpdate() {
