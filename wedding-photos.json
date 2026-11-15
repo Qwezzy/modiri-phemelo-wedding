@@ -1,1 +1,121 @@
-[]
+[
+ {
+  "src": "wedding/guests-01.jpg",
+  "thumb": "wedding/thumb/guests-01.jpg",
+  "alt": "Guests walking up the garden path",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-02.jpg",
+  "thumb": "wedding/thumb/guests-02.jpg",
+  "alt": "Two guests greeting the camera on the path",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-03.jpg",
+  "thumb": "wedding/thumb/guests-03.jpg",
+  "alt": "Four guests together on the path",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-04.jpg",
+  "thumb": "wedding/thumb/guests-04.jpg",
+  "alt": "Guests arriving in the garden",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-05.jpg",
+  "thumb": "wedding/thumb/guests-05.jpg",
+  "alt": "A couple in black on the stone path"
+ },
+ {
+  "src": "wedding/guests-06.jpg",
+  "thumb": "wedding/thumb/guests-06.jpg",
+  "alt": "A couple in black posing on the path"
+ },
+ {
+  "src": "wedding/guests-07.jpg",
+  "thumb": "wedding/thumb/guests-07.jpg",
+  "alt": "Guests at the white photo backdrop",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-08.jpg",
+  "thumb": "wedding/thumb/guests-08.jpg",
+  "alt": "A couple at the photo backdrop with white flowers",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-09.jpg",
+  "thumb": "wedding/thumb/guests-09.jpg",
+  "alt": "A guest seated on the Suitability Gardens sign",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-10.jpg",
+  "thumb": "wedding/thumb/guests-10.jpg",
+  "alt": "A guest in a black hat, enjoying the day",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-11.jpg",
+  "thumb": "wedding/thumb/guests-11.jpg",
+  "alt": "A guest on the phone under the white drapes",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-12.jpg",
+  "thumb": "wedding/thumb/guests-12.jpg",
+  "alt": "Portrait of a guest in a black fascinator",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-13.jpg",
+  "thumb": "wedding/thumb/guests-13.jpg",
+  "alt": "A guest in a black hat and gold earrings"
+ },
+ {
+  "src": "wedding/guests-14.jpg",
+  "thumb": "wedding/thumb/guests-14.jpg",
+  "alt": "A smiling guest in a wide-brimmed black hat"
+ },
+ {
+  "src": "wedding/guests-15.jpg",
+  "thumb": "wedding/thumb/guests-15.jpg",
+  "alt": "A guest in sunglasses and a black hat"
+ },
+ {
+  "src": "wedding/guests-16.jpg",
+  "thumb": "wedding/thumb/guests-16.jpg",
+  "alt": "A guest resting his chin on his hand"
+ },
+ {
+  "src": "wedding/guests-17.jpg",
+  "thumb": "wedding/thumb/guests-17.jpg",
+  "alt": "Friends posing together in black and denim",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-18.jpg",
+  "thumb": "wedding/thumb/guests-18.jpg",
+  "alt": "Guests arriving, smiling for the camera",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-19.jpg",
+  "thumb": "wedding/thumb/guests-19.jpg",
+  "alt": "Looking up at the Suitability Gardens sign",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-20.jpg",
+  "thumb": "wedding/thumb/guests-20.jpg",
+  "alt": "A guest in black at the reception tables",
+  "wide": true
+ },
+ {
+  "src": "wedding/guests-21.jpg",
+  "thumb": "wedding/thumb/guests-21.jpg",
+  "alt": "A couple in black, arm in arm"
+ }
+]
