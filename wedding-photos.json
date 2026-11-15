@@ -1,5 +1,17 @@
 [
  {
+  "src": "wedding/mw-8293.jpg",
+  "thumb": "wedding/thumb/mw-8293.jpg",
+  "alt": "Guests walking up the garden path",
+  "wide": true
+ },
+ {
+  "src": "wedding/mw-8150.jpg",
+  "thumb": "wedding/thumb/mw-8150.jpg",
+  "alt": "Two guests sharing a laugh on the way in",
+  "wide": true
+ },
+ {
   "src": "wedding/mw-8138.jpg",
   "thumb": "wedding/thumb/mw-8138.jpg",
   "alt": "A couple in black arriving on the garden path"
@@ -10,15 +22,9 @@
   "alt": "The stone garden path lined with black posts"
  },
  {
-  "src": "wedding/mw-8150.jpg",
-  "thumb": "wedding/thumb/mw-8150.jpg",
-  "alt": "Two guests sharing a laugh on the way in",
-  "wide": true
- },
- {
-  "src": "wedding/mw-8174.jpg",
-  "thumb": "wedding/thumb/mw-8174.jpg",
-  "alt": "A guest in a black trouser suit",
+  "src": "wedding/mw-8193.jpg",
+  "thumb": "wedding/thumb/mw-8193.jpg",
+  "alt": "Two friends laughing as they arrive",
   "wide": true
  },
  {
@@ -28,9 +34,25 @@
   "wide": true
  },
  {
-  "src": "wedding/mw-8193.jpg",
-  "thumb": "wedding/thumb/mw-8193.jpg",
-  "alt": "Two friends laughing as they arrive",
+  "src": "wedding/mw-8295.jpg",
+  "thumb": "wedding/thumb/mw-8295.jpg",
+  "alt": "Two guests greeting the camera on the path",
+  "wide": true
+ },
+ {
+  "src": "wedding/mw-8467.jpg",
+  "thumb": "wedding/thumb/mw-8467.jpg",
+  "alt": "A couple in black on the stone path"
+ },
+ {
+  "src": "wedding/mw-8570.jpg",
+  "thumb": "wedding/thumb/mw-8570.jpg",
+  "alt": "Two guests in black gowns walking in"
+ },
+ {
+  "src": "wedding/mw-8297.jpg",
+  "thumb": "wedding/thumb/mw-8297.jpg",
+  "alt": "Friends posing together in black and denim",
   "wide": true
  },
  {
@@ -40,21 +62,25 @@
   "wide": true
  },
  {
-  "src": "wedding/mw-8293.jpg",
-  "thumb": "wedding/thumb/mw-8293.jpg",
-  "alt": "Guests walking up the garden path",
+  "src": "wedding/mw-8174.jpg",
+  "thumb": "wedding/thumb/mw-8174.jpg",
+  "alt": "A guest in a black trouser suit",
   "wide": true
  },
  {
-  "src": "wedding/mw-8295.jpg",
-  "thumb": "wedding/thumb/mw-8295.jpg",
-  "alt": "Two guests greeting the camera on the path",
-  "wide": true
+  "src": "wedding/mw-8567.jpg",
+  "thumb": "wedding/thumb/mw-8567.jpg",
+  "alt": "Guests in black gowns under the big tree"
  },
  {
-  "src": "wedding/mw-8297.jpg",
-  "thumb": "wedding/thumb/mw-8297.jpg",
-  "alt": "Friends posing together in black and denim",
+  "src": "wedding/mw-8574.jpg",
+  "thumb": "wedding/thumb/mw-8574.jpg",
+  "alt": "A guest in black beside the white d\u00e9cor and anthurium flowers"
+ },
+ {
+  "src": "wedding/mw-8463.jpg",
+  "thumb": "wedding/thumb/mw-8463.jpg",
+  "alt": "Guests arriving in the garden",
   "wide": true
  },
  {
@@ -64,21 +90,48 @@
   "wide": true
  },
  {
-  "src": "wedding/mw-8463.jpg",
-  "thumb": "wedding/thumb/mw-8463.jpg",
-  "alt": "Guests arriving in the garden",
+  "src": "wedding/mw-8565.jpg",
+  "thumb": "wedding/thumb/mw-8565.jpg",
+  "alt": "Guests in black gowns crossing the courtyard",
   "wide": true
  },
  {
-  "src": "wedding/mw-8467.jpg",
-  "thumb": "wedding/thumb/mw-8467.jpg",
-  "alt": "A couple in black on the stone path"
+  "src": "wedding/mw-8589.jpg",
+  "thumb": "wedding/thumb/mw-8589.jpg",
+  "alt": "A guest posing at the seating wall"
+ },
+ {
+  "src": "wedding/mw-9121.jpg",
+  "thumb": "wedding/thumb/mw-9121.jpg",
+  "alt": "A cellist playing in the garden"
  },
  {
   "src": "wedding/mw-8476.jpg",
   "thumb": "wedding/thumb/mw-8476.jpg",
   "alt": "Guests at the white photo backdrop",
   "wide": true
+ },
+ {
+  "src": "wedding/mw-8668.jpg",
+  "thumb": "wedding/thumb/mw-8668.jpg",
+  "alt": "Guests at the white seating wall and flowers",
+  "wide": true
+ },
+ {
+  "src": "wedding/mw-8642.jpg",
+  "thumb": "wedding/thumb/mw-8642.jpg",
+  "alt": "Guests making a heart beside the Modiri weds Phemelo sign",
+  "wide": true
+ },
+ {
+  "src": "wedding/mw-8493.jpg",
+  "thumb": "wedding/thumb/mw-8493.jpg",
+  "alt": "A smiling guest in a wide-brimmed black hat"
+ },
+ {
+  "src": "wedding/mw-8498.jpg",
+  "thumb": "wedding/thumb/mw-8498.jpg",
+  "alt": "A guest resting his chin on his hand"
  },
  {
   "src": "wedding/mw-8483.jpg",
@@ -93,57 +146,9 @@
   "wide": true
  },
  {
-  "src": "wedding/mw-8493.jpg",
-  "thumb": "wedding/thumb/mw-8493.jpg",
-  "alt": "A smiling guest in a wide-brimmed black hat"
- },
- {
-  "src": "wedding/mw-8498.jpg",
-  "thumb": "wedding/thumb/mw-8498.jpg",
-  "alt": "A guest resting his chin on his hand"
- },
- {
-  "src": "wedding/mw-8565.jpg",
-  "thumb": "wedding/thumb/mw-8565.jpg",
-  "alt": "Guests in black gowns crossing the courtyard",
-  "wide": true
- },
- {
-  "src": "wedding/mw-8567.jpg",
-  "thumb": "wedding/thumb/mw-8567.jpg",
-  "alt": "Guests in black gowns under the big tree"
- },
- {
-  "src": "wedding/mw-8570.jpg",
-  "thumb": "wedding/thumb/mw-8570.jpg",
-  "alt": "Two guests in black gowns walking in"
- },
- {
-  "src": "wedding/mw-8574.jpg",
-  "thumb": "wedding/thumb/mw-8574.jpg",
-  "alt": "A guest in black beside the white d\u00e9cor and anthurium flowers"
- },
- {
-  "src": "wedding/mw-8589.jpg",
-  "thumb": "wedding/thumb/mw-8589.jpg",
-  "alt": "A guest posing at the seating wall"
- },
- {
-  "src": "wedding/mw-8642.jpg",
-  "thumb": "wedding/thumb/mw-8642.jpg",
-  "alt": "Guests making a heart beside the Modiri weds Phemelo sign",
-  "wide": true
- },
- {
-  "src": "wedding/mw-8668.jpg",
-  "thumb": "wedding/thumb/mw-8668.jpg",
-  "alt": "Guests at the white seating wall and flowers",
-  "wide": true
- },
- {
-  "src": "wedding/mw-9070.jpg",
-  "thumb": "wedding/thumb/mw-9070.jpg",
-  "alt": "Guests at the buffet",
+  "src": "wedding/mw-9089.jpg",
+  "thumb": "wedding/thumb/mw-9089.jpg",
+  "alt": "Guests in black chatting under the drapes",
   "wide": true
  },
  {
@@ -152,9 +157,14 @@
   "alt": "A guest smiling with his plate"
  },
  {
-  "src": "wedding/mw-9089.jpg",
-  "thumb": "wedding/thumb/mw-9089.jpg",
-  "alt": "Guests in black chatting under the drapes",
+  "src": "wedding/mw-9216.jpg",
+  "thumb": "wedding/thumb/mw-9216.jpg",
+  "alt": "A guest at the microphone"
+ },
+ {
+  "src": "wedding/mw-9070.jpg",
+  "thumb": "wedding/thumb/mw-9070.jpg",
+  "alt": "Guests at the buffet",
   "wide": true
  },
  {
@@ -164,19 +174,9 @@
   "wide": true
  },
  {
-  "src": "wedding/mw-9121.jpg",
-  "thumb": "wedding/thumb/mw-9121.jpg",
-  "alt": "A cellist playing in the garden"
- },
- {
   "src": "wedding/mw-9209.jpg",
   "thumb": "wedding/thumb/mw-9209.jpg",
   "alt": "A guest giving a speech",
   "wide": true
- },
- {
-  "src": "wedding/mw-9216.jpg",
-  "thumb": "wedding/thumb/mw-9216.jpg",
-  "alt": "A guest at the microphone"
  }
 ]

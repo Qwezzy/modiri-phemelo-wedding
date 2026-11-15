@@ -89,12 +89,12 @@ h2 { font-family: var(--display); font-weight: 500; text-align: center; font-siz
 
 /* Photo grid: full colour, cropped to tiles; the lightbox shows the whole frame */
 .count { margin: 0 0 18px; text-align: center; font-family: var(--display); font-weight: 500; font-size: 13px; letter-spacing: .22em; padding-left: .22em; color: var(--ink-soft); }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 10px; }
-@media (max-width: 520px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; } }
+/* Two columns on phones, four on wider screens. Wide photos span two columns; portraits come in pairs, so every row fills. */
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+@media (min-width: 700px) { .grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; } }
 .grid button { padding: 0; border: 0; background: var(--paper-2); cursor: zoom-in; aspect-ratio: 4 / 5; overflow: hidden; }
 .grid img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-.grid { grid-auto-flow: dense; }
-.grid button.wide { grid-column: span 2; aspect-ratio: 8 / 5; }
+.grid button.wide { grid-column: span 2; aspect-ratio: auto; }
 .grid button:hover img { transform: scale(1.04); }
 .grid button:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 .empty { border: 1px dashed var(--rule); padding: 40px 20px; text-align: center; display: grid; gap: 10px; justify-items: center; }
